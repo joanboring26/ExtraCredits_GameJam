@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class playerMover : MonoBehaviour
 {
-    LayerMask movementMask;
-    CellBase playerCell;
+    public LayerMask movementMask;
+    public CellBase playerCell;
 
     //Function that checks if there is an entity in the given movement direction
     public bool CheckDir(MovDir direction)
@@ -36,16 +36,20 @@ public class playerMover : MonoBehaviour
         Physics.Linecast(transform.position, transform.position + dir, out rayInfo, movementMask);
         Debug.DrawLine(transform.position, transform.position + dir, Color.red);
 
-        //Check if the thing we hit is another entity
-        CellBase otherCell = rayInfo.transform.gameObject.GetComponent<CellBase>();
-        if(otherCell != null)
+        //Check if we even hit anything
+        if (rayInfo.transform != null)
         {
-            if(otherCell.CellInteract(playerCell))
+            //Check if the thing we hit is another entity
+            CellBase otherCell = rayInfo.transform.gameObject.GetComponent<CellBase>();
+            if (otherCell != null)
             {
-                playerCell.currDir = dir;
-                return true;
+                if (otherCell.CellInteract(playerCell))
+                {
+                    playerCell.currDir = dir;
+                    return true;
+                }
+                return false;
             }
-            return false;
         }
         playerCell.currDir = dir;
         return true;
