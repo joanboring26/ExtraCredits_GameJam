@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 1394814360}
   m_Layer: 0
   m_Name: TestingTools
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -634,8 +634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8057746a13751254baf39c897d0539cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increaseHealthbar: 43
-  decreaseHealthbar: 45
+  increaseHealthbar: 275
+  decreaseHealthbar: 276
   speedUpTime: 32
   timeMultiplier: 3
   healthbar: {fileID: 772600252}
