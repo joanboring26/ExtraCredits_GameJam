@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerCellBase : CellBase
+public class PlayerCellBase : CellBase
 {
     public int hp;
 

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerInputs : MonoBehaviour
+public class PlayerInputs : MonoBehaviour
 {
-    public playerMover mover;
+    public PlayerMover mover;
     // Update is called once per frame
     void Update()
     {
