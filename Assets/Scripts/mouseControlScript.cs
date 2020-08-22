@@ -14,7 +14,14 @@ public class mouseControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(Input.GetMouseButtonDown(0)){
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if(Physics.Raycast(ray, out hit)){
+                if(hit.collider.gameObject.tag == "MoveSpace");
+                    CheckMove(hit.collider.gameObject.GetComponent<moveSpaceScript>());
+            }
+        }
     }
 
     void FixedUpdate()
@@ -39,5 +46,11 @@ public class mouseControlScript : MonoBehaviour
             space.LightUpValid();
         else
             space.LightUpInvalid();
+    }
+
+    void CheckMove(moveSpaceScript space)
+    {
+        if(SpaceIsValid(space.GetRow(), space.GetColumn()))
+            knight.MoveToSpace(space);
     }
 }

@@ -32,4 +32,9 @@ public class knightScript : MonoBehaviour
     {
         return new Vector2(row, column);
     }
+
+    public void MoveToSpace(moveSpaceScript space)
+    {
+
+    }
 }
