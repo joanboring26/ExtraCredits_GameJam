@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class mainMenuScript : MonoBehaviour
 {
     [SerializeField] Button playButton;
@@ -20,7 +21,7 @@ public class mainMenuScript : MonoBehaviour
 
     void OnClickPlay()
     {
-        //start the scene
+        SceneManager.LoadScene("introCutscene");
     }
 
     void OnClickCredits()

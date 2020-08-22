@@ -8,8 +8,9 @@ public class testingToolsScript : MonoBehaviour
     [SerializeField] KeyCode increaseHealthbar;
     [SerializeField] KeyCode decreaseHealthbar;
     [SerializeField] KeyCode speedUpTime;
+    [SerializeField] KeyCode showAlert;
     [SerializeField] float timeMultiplier;
-    [SerializeField] healthbarScript healthbar;
+    [SerializeField] uiMasterScript ui;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +21,15 @@ public class testingToolsScript : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(increaseHealthbar))
-            healthbar.ChangeHealth(0.1f);
+            ui.DamageKing(-0.1f);
         if(Input.GetKeyDown(decreaseHealthbar))
-            healthbar.ChangeHealth(-0.1f);
+            ui.DamageKing(0.1f);
         if(Input.GetKeyDown(speedUpTime))
             if(Time.timeScale == 1)
                 Time.timeScale = timeMultiplier;
             else
                 Time.timeScale = 1;
+        if(Input.GetKeyDown(showAlert))
+            StartCoroutine(ui.ShowAlertText());
     }
 }

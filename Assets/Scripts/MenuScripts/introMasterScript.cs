@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class introMasterScript : MonoBehaviour
 {
     [SerializeField] textFadeScript [] textFades;
@@ -17,7 +17,7 @@ public class introMasterScript : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Return))
-            Debug.Log("continue here");
+            SceneManager.LoadScene("kingEscortScene");
     }
 
     private IEnumerator IntroCutscene()
