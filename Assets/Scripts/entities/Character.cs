@@ -22,6 +22,11 @@ public class Character : MonoBehaviour
         return false;
     }
 
+    public virtual void Kill(Vector3 impactForce)
+    {
+
+    }
+
     public virtual void CharacterUpdate()
     {
 
@@ -55,6 +60,7 @@ public enum CharacterType
     KING,
     PLAYER,
     PLANT,
+    ASSASIN,
     OBSTACLE,
     NONE
 }
