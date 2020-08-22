@@ -57,5 +57,34 @@ public static class Mover
         sourceCharacter.transform.position += dir;
         sourceCharacter.MoveModelToPos(sourceCharacter.transform.position);
         return true;
-    }    
+    }
+
+    public static MovDir WaypointDirection(Character character, Vector3 waypoint)
+    {
+        Vector3 vector = waypoint - character.transform.position;
+        bool forwardLeft = vector.z > vector.x;
+        bool forwardRight = vector.z + vector.x > 0;
+        if (forwardLeft)
+        {
+            if (forwardRight)
+            {
+                return MovDir.FORWARD;
+            }
+            else 
+            {
+                return MovDir.LEFT;
+            }
+        }
+        else
+        {
+            if (forwardRight)
+            {
+                return MovDir.RIGHT;
+            }
+            else
+            {
+                return MovDir.BACK;
+            }
+        }
+    }
 }
