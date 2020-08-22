@@ -46,7 +46,6 @@ public class textBoxScript : MonoBehaviour
         Vector3 backgroundSize = background.transform.localScale;
         backgroundSize.x = textWidth;
         background.transform.localScale = backgroundSize;
-        //Setup(textUsed);
         WaitForSeconds wait = new WaitForSeconds(0.1f);
         for(int i = 0; i < textUsed.Length; i++)
         {
