@@ -30,7 +30,8 @@ public class mouseControlScript : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out hit)){
             if(hit.collider.gameObject.tag == "MoveSpace")
-                MoveSpaceLightUp(hit.collider.gameObject.GetComponent<moveSpaceScript>());
+                Debug.Log("space");
+                //Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
         }
     }
     private bool SpaceIsValid(int row, int column)
