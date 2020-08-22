@@ -13,32 +13,30 @@ public class Assasin : Character
     }
 
     public override void CharacterUpdate()
-    {
-        float distX = transform.position.x - kingTransform.position.x;
-        float distZ = transform.position.z - kingTransform.position.z;
-        if(Mathf.Abs(distX) > Mathf.Abs(distZ))
+    {        
+        MovDir primaryDirection;
+        MovDir secondaryDirection;
+        Mover.WaypointDirection(
+            this,
+            kingTransform.position,
+            out primaryDirection,
+            out secondaryDirection);
+        currDir = primaryDirection;
+        if (!Mover.MoveCharacter(
+            this,
+            out charInTheWay,
+            true, 
+            currDir,
+            Physics.DefaultRaycastLayers))
         {
-            if(distX > 0)
-            {
-                currDir = MovDir.LEFT;
-            }
-            else
-            {
-                currDir = MovDir.RIGHT;
-            }
+            currDir = secondaryDirection;
+            Mover.MoveCharacter(
+                this,
+                out charInTheWay,
+                true,
+                currDir,
+                Physics.DefaultRaycastLayers);                
         }
-        else
-        {
-            if (distZ > 0)
-            {
-                currDir = MovDir.BACK;
-            }
-            else
-            {
-                currDir = MovDir.FORWARD;
-            }
-        }
-        Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
         currDir = MovDir.NONE;
     }
 

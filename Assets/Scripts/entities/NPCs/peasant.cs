@@ -22,7 +22,6 @@ public class Peasant : Character
                 }
                 currDir = MovDir.NONE;
                 return false;
-                break;
             case CharacterType.KING:
                 Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
                 //Code that makes the peasant pissed off
@@ -30,28 +29,22 @@ public class Peasant : Character
                 //
                 currDir = MovDir.NONE;
                 return false;
-                break;
             case CharacterType.PLAYER:
                 Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
                 currDir = MovDir.NONE;
                 return false;
-                break;
             case CharacterType.PLANT:
                 currDir = MovDir.NONE;
                 return true;
-                break;
             case CharacterType.OBSTACLE:
                 currDir = MovDir.NONE;
                 return true;
-                break;
             case CharacterType.NONE:
                 currDir = MovDir.NONE;
                 return true;
-                break;
             default:
                 currDir = MovDir.NONE;
                 return false;
-                break;
         }
     }
 
