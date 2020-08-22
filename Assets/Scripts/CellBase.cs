@@ -2,24 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CellTypes
-{
-    PEASANT,
-    KING,
-    PLAYER,
-    PLANT,
-    OBSTACLE,
-    NONE
-}
-
-public enum MovDir
-{
-    FORWARD,
-    BACK,
-    LEFT,
-    RIGHT
-}
-
 public class CellBase : MonoBehaviour
 {
     //This class will only define interaction functions between the cells
@@ -42,4 +24,22 @@ public class CellBase : MonoBehaviour
         transform.position += dir;
     }
 
+}
+
+public enum CellTypes
+{
+    PEASANT,
+    KING,
+    PLAYER,
+    PLANT,
+    OBSTACLE,
+    NONE
+}
+
+public enum MovDir
+{
+    FORWARD,
+    BACK,
+    LEFT,
+    RIGHT
 }

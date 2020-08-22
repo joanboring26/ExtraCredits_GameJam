@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class playerMover : MonoBehaviour
+public class PlayerMover : MonoBehaviour
 {
     public LayerMask movementMask;
     public CellBase playerCell;
