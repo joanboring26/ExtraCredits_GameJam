@@ -2,25 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CellBase : MonoBehaviour
+public class Character : MonoBehaviour
 {
     //This class will only define interaction functions between the cells
-    public CellTypes type;
-    public Vector3 currDir;
+    public CharacterType type;
 
-    public virtual bool CellInteract(CellBase user)
+    public virtual bool Interact(Character user)
     {
         return true;
     }
 
-    public virtual void CellUpdate()
+    public virtual void CharacterUpdate()
     {
 
     }    
 
 }
 
-public enum CellTypes
+public enum CharacterType
 {
     PEASANT,
     KING,
