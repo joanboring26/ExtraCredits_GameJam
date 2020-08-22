@@ -11,7 +11,12 @@ public class Character : MonoBehaviour
     public float moveSpeed;
     public Transform modelTransform;
     public Coroutine moveModelCoroutine;
-    public textBoxScript textBox;
+
+    private void Awake()
+    {
+        TimeKeeper.Register(this);
+    }
+
     public virtual bool Interact(Character user)
     {
         return false;
