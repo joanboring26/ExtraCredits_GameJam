@@ -53,7 +53,47 @@ public static class Mover
         return true;
     }
 
-    public static void WaypointDirection(
+    public static bool MoveCharacterToWayPoint(
+        Character sourceCharacter, 
+        out Character hitCharacter,
+        bool pushHitCharacter,
+        Vector3 waypoint,
+        LayerMask layerMask)
+    {
+        MovDir primaryDir;
+        MovDir secondaryDir;
+        WaypointDirection(
+            sourceCharacter, 
+            waypoint, 
+            out primaryDir, 
+            out secondaryDir);
+        sourceCharacter.currDir = primaryDir;
+        // try moving in primary direction first
+        bool firstMoveWorked =
+            MoveCharacter(
+            sourceCharacter,
+            out hitCharacter,
+            true,
+            sourceCharacter.currDir,
+            Physics.DefaultRaycastLayers);
+        bool secondMoveWorked = false;
+        // if that failed, then try secondary direction
+        if (!firstMoveWorked)
+        {
+            sourceCharacter.currDir = secondaryDir;
+            secondMoveWorked =
+                MoveCharacter(
+                sourceCharacter,
+                out hitCharacter,
+                true,
+                sourceCharacter.currDir,
+                Physics.DefaultRaycastLayers);
+        }
+        sourceCharacter.currDir = MovDir.NONE;
+        return firstMoveWorked || secondMoveWorked;
+    }
+
+    static void WaypointDirection(
         Character character, 
         Vector3 waypoint,
         out MovDir primaryDirection,

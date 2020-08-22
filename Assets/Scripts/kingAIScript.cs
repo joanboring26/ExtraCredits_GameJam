@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class kingAIScript : Character
+public class KingAIScript : Character
 {
     private CharacterType thisType = CharacterType.KING;
+    [SerializeField] GameObject waypoint = null;
 
     [SerializeField] Vector2 destination;
     // Start is called before the first frame update
@@ -21,7 +22,15 @@ public class kingAIScript : Character
 
     public override void CharacterUpdate()
     {
-        Character hitCharacter = new Character();
-        Mover.MoveCharacter(this, out hitCharacter, true, MovDir.FORWARD, Physics.DefaultRaycastLayers);
+        if (waypoint == null)
+            return;
+        Vector3 waypointPos = waypoint.transform.position;
+        Character hitCharacter = null;
+        Mover.MoveCharacterToWayPoint(
+            this,
+            out hitCharacter,
+            true,
+            waypointPos,
+            Physics.DefaultRaycastLayers);
     }
 }
