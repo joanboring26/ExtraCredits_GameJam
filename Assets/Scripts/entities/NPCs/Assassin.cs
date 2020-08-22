@@ -6,7 +6,7 @@ public class Assassin : Character
 {
     public Transform kingTransform;
     Character charInTheWay;
-    public GameObject corpse;
+    public GameObject corpse;    
 
 
     private void Start()
@@ -15,39 +15,21 @@ public class Assassin : Character
     }
 
     public override void CharacterUpdate()
-    {
-        float distX = transform.position.x - kingTransform.position.x;
-        float distZ = transform.position.z - kingTransform.position.z;
-        if(Mathf.Abs(distX) > Mathf.Abs(distZ))
-        {
-            if(distX > 0)
-            {
-                currDir = MovDir.LEFT;
-            }
-            else
-            {
-                currDir = MovDir.RIGHT;
-            }
-        }
-        else
-        {
-            if (distZ > 0)
-            {
-                currDir = MovDir.BACK;
-            }
-            else
-            {
-                currDir = MovDir.FORWARD;
-            }
-        }
-        Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
-        currDir = MovDir.NONE;
+    {        
+        Mover.MoveCharacterToWayPoint(
+            this,
+            out charInTheWay,
+            true,
+            kingTransform.position,
+            Physics.DefaultRaycastLayers);
     }
 
     public override void Kill(Vector3 impactForce)
     {
         GameObject corpseInstance = Instantiate(corpse, transform.position, transform.rotation);
-        corpseInstance.GetComponent<Rigidbody>().AddForce(impactForce, ForceMode.Impulse);
+        corpseInstance.GetComponent<Rigidbody>().AddForce(
+            impactForce * deathForceMultiplier + Vector3.up, 
+            ForceMode.Impulse);
         Destroy(gameObject);
         Destroy(this);
     }

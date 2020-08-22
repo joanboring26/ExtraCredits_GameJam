@@ -14,10 +14,19 @@ public static class TimeKeeper
         characters.Add(character);
     }
 
+    public static void Deregister(Character character)
+    {
+        if (characters == null)
+            return; 
+        characters.Remove(character);
+    }
+
     public static void NextTurn()
     {
         foreach (var character in characters)
         {
+            if (character == null)
+                continue;
             character.CharacterUpdate();
         }
     }

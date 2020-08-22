@@ -252,7 +252,8 @@ MonoBehaviour:
   currDir: 0
   prevModelPos: {x: 0, y: 0, z: 0}
   moveSpeed: 0
-  modelTransform: {fileID: 929490242}
+  modelTransform: {fileID: 0}
+  deathForceMultiplier: 8
   AngerLimit: 0
   corpse: {fileID: 0}
 --- !u!65 &350479502
@@ -317,8 +318,9 @@ MonoBehaviour:
   currDir: 0
   prevModelPos: {x: 0, y: 0, z: 0}
   moveSpeed: 0
-  modelTransform: {fileID: 1893527813}
-  AngerLimit: 3
+  modelTransform: {fileID: 0}
+  deathForceMultiplier: 8
+  AngerLimit: 0
   corpse: {fileID: 0}
 --- !u!65 &352643453
 BoxCollider:
@@ -465,8 +467,9 @@ MonoBehaviour:
   currDir: 0
   prevModelPos: {x: 0, y: 0, z: 0}
   moveSpeed: 0
-  modelTransform: {fileID: 2083014720}
-  AngerLimit: 3
+  modelTransform: {fileID: 0}
+  deathForceMultiplier: 8
+  AngerLimit: 0
   corpse: {fileID: 0}
 --- !u!65 &439613790
 BoxCollider:
@@ -871,6 +874,7 @@ MonoBehaviour:
   prevModelPos: {x: 0, y: 0, z: 0}
   moveSpeed: 10
   modelTransform: {fileID: 494782919}
+  deathForceMultiplier: 5
   hp: 0
 --- !u!114 &961857337
 MonoBehaviour:
@@ -1069,6 +1073,7 @@ MonoBehaviour:
   prevModelPos: {x: 0, y: 0, z: 0}
   moveSpeed: 10
   modelTransform: {fileID: 1737079515}
+  deathForceMultiplier: 3
   kingTransform: {fileID: 961857334}
   corpse: {fileID: 9065811185369735357, guid: 3a1852cb57dadaa4d8bca1d6bbbfd3da, type: 3}
 --- !u!65 &1901538711

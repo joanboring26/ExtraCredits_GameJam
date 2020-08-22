@@ -11,10 +11,18 @@ public class Character : MonoBehaviour
     public float moveSpeed;
     public Transform modelTransform;
     public Coroutine moveModelCoroutine;
+    public float deathForceMultiplier = 8;
 
     private void Awake()
     {
         TimeKeeper.Register(this);
+        if (transform.childCount > 0)
+            modelTransform = transform.GetChild(0);
+    }
+
+    private void OnDestroy()
+    {
+        TimeKeeper.Deregister(this);
     }
 
     public virtual bool Interact(Character user)
