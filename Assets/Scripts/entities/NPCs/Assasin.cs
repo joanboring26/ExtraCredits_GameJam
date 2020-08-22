@@ -5,6 +5,7 @@ using UnityEngine;
 public class Assasin : Character
 {
     public Transform kingTransform;
+    Character charInTheWay;
 
     private void Start()
     {
@@ -15,18 +16,30 @@ public class Assasin : Character
     {
         float distX = transform.position.x - kingTransform.position.x;
         float distZ = transform.position.z - kingTransform.position.z;
-        Vector3 dir = new Vector3(0, 0, 0);
-        if(distX > distZ)
+        if(Mathf.Abs(distX) > Mathf.Abs(distZ))
         {
             if(distX > 0)
             {
-                dir.x = 1;
+                currDir = MovDir.LEFT;
             }
             else
             {
-                dir.x = 1;
+                currDir = MovDir.RIGHT;
             }
         }
+        else
+        {
+            if (distZ > 0)
+            {
+                currDir = MovDir.BACK;
+            }
+            else
+            {
+                currDir = MovDir.FORWARD;
+            }
+        }
+        Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
+        currDir = MovDir.NONE;
     }
 
 }

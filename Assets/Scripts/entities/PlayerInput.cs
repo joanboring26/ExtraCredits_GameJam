@@ -41,6 +41,6 @@ public class PlayerInput : MonoBehaviour
             return;
         }
         Mover.MoveCharacter(player, out charInTheWay, true, player.currDir, Physics.DefaultRaycastLayers);
-
+        TimeKeeper.NextTurn();
     }
 }
