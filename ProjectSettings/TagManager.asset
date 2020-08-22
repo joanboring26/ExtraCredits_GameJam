@@ -43,3 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: TextBox
+    uniqueID: 150572015
+    locked: 0

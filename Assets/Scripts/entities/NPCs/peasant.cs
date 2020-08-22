@@ -31,7 +31,6 @@ public class Peasant : Character
                 }
                 currDir = MovDir.NONE;
                 return false;
-                break;
             case CharacterType.KING:
                 Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
                 //Code that makes the peasant pissed off
@@ -52,7 +51,6 @@ public class Peasant : Character
             default:
                 currDir = MovDir.NONE;
                 return false;
-                break;
         }
     }
 

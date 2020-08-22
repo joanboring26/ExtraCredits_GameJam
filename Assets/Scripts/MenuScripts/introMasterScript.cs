@@ -29,21 +29,22 @@ public class introMasterScript : MonoBehaviour
         sound.Play();
         yield return StartCoroutine(textFades[0].TextFadeIn(1.0f)); //you are the highest ranking
         yield return new WaitForSeconds(1.5f);
-        StartCoroutine(textFades[0].TextFadeOut(2.0f));
+        //StartCoroutine(textFades[0].TextFadeOut(2.0f));
         yield return StartCoroutine(textFades[1].TextFadeIn(1.0f)); //as the highest ranking
         yield return new WaitForSeconds(1.5f);
-        StartCoroutine(textFades[1].TextFadeOut(2.0f));
+        //StartCoroutine(textFades[1].TextFadeOut(2.0f));
         yield return StartCoroutine(textFades[2].TextFadeIn(0.5f)); //there's
-        StartCoroutine(textFades[2].TextFadeOut(1.0f));
+        //StartCoroutine(textFades[2].TextFadeOut(1.0f));
         yield return StartCoroutine(textFades[3].TextFadeIn(0.5f)); //just
-        StartCoroutine(textFades[3].TextFadeOut(1.0f));
+        //StartCoroutine(textFades[3].TextFadeOut(1.0f));
         yield return StartCoroutine(textFades[4].TextFadeIn(0.5f)); //one
-        StartCoroutine(textFades[4].TextFadeOut(1.0f));
+        //StartCoroutine(textFades[4].TextFadeOut(1.0f));
         yield return StartCoroutine(textFades[5].TextFadeIn(0.5f)); //problem
         yield return new WaitForSeconds(1.0f);
-        StartCoroutine(textFades[5].TextFadeOut(1.5f));
+        //StartCoroutine(textFades[5].TextFadeOut(1.5f));
         yield return StartCoroutine(textFades[6].TextFadeIn(1.0f)); //he's the kinda guy
         sound.clip = recordScratch;
+        sound.volume = 0.1f;
         sound.Play();
         yield return new WaitForSeconds(1.0f);
         yield return StartCoroutine(textFades[7].TextFadeIn(1.0f));

@@ -27,27 +27,21 @@ public static class Mover
         {
             //Check if the blocking thing is a character
             hitCharacter = rayInfo.transform.gameObject.GetComponent<Character>();
-            if (hitCharacter != null)
-            {
-                //If the function cant interact with objects then ignore the hit object and dont move, if it can, do an interact
-                if (!pushHitCharacter)
-                {
-                    return false;
-                }
-                else
-                {
-                    //If the character we interact with tells us that we shouldnt move, we return false and we dont move
-                    //if it doesnt, then we move
-                    if (!hitCharacter.Interact(sourceCharacter))
-                    {
-                        return false;
-                    }
-                }
-            }
-            else
+            if (hitCharacter == null)
+                return false;
+            
+            //If the function cant interact with objects then ignore the hit object and dont move, if it can, do an interact
+            if (!pushHitCharacter)
             {
                 return false;
             }
+            //If the character we interact with tells us that we shouldnt move, 
+            //we return false and we dont move
+            //if it doesnt, then we move
+            if (!hitCharacter.Interact(sourceCharacter))
+            {
+                return false;
+            }                                                                            
         }
 
         //If the way is clear, then move sourceCharacter and return true
@@ -59,31 +53,42 @@ public static class Mover
         return true;
     }
 
-    public static MovDir WaypointDirection(Character character, Vector3 waypoint)
+    public static void WaypointDirection(
+        Character character, 
+        Vector3 waypoint,
+        out MovDir primaryDirection,
+        out MovDir secondaryDirection)
     {
         Vector3 vector = waypoint - character.transform.position;
         bool forwardLeft = vector.z > vector.x;
         bool forwardRight = vector.z + vector.x > 0;
+        bool forward = vector.z > 0;
+        bool right = vector.x > 0;        
+
         if (forwardLeft)
         {
             if (forwardRight)
             {
-                return MovDir.FORWARD;
+                primaryDirection = MovDir.FORWARD;
+                secondaryDirection = right ? MovDir.RIGHT : MovDir.LEFT;
             }
-            else 
+            else // backLeft
             {
-                return MovDir.LEFT;
+                primaryDirection = MovDir.LEFT;
+                secondaryDirection = forward ? MovDir.FORWARD : MovDir.BACK;
             }
         }
-        else
+        else // backRight
         {
             if (forwardRight)
             {
-                return MovDir.RIGHT;
+                primaryDirection = MovDir.RIGHT;
+                secondaryDirection = forward ? MovDir.FORWARD : MovDir.BACK;
             }
-            else
+            else // backLeft
             {
-                return MovDir.BACK;
+                primaryDirection = MovDir.BACK;
+                secondaryDirection = right ? MovDir.RIGHT : MovDir.LEFT;
             }
         }
     }

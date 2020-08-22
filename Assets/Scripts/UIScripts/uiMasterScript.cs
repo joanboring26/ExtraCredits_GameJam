@@ -6,16 +6,23 @@ public class uiMasterScript : MonoBehaviour
 {
     [SerializeField] textFadeScript alertText;
     [SerializeField] healthbarScript kingHealthBar;
+    [SerializeField] Camera cam;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(cam.aspect < 1.5)
+            SetSmallScreen();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    
+    private void SetSmallScreen()
+    {
+
     }
 
     public IEnumerator ShowAlertText()
