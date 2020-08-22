@@ -6,10 +6,11 @@ public class Character : MonoBehaviour
 {
     //This class will only define interaction functions between the cells
     public CharacterType type;
+    public MovDir currDir;
 
     public virtual bool Interact(Character user)
     {
-        return true;
+        return false;
     }
 
     public virtual void CharacterUpdate()
@@ -34,5 +35,6 @@ public enum MovDir
     FORWARD,
     BACK,
     LEFT,
-    RIGHT
+    RIGHT,
+    NONE
 }

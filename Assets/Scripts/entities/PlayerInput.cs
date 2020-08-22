@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     Character player = null;
+
+    Character charInTheWay;
+
     private void Awake()
     {
         player = GetComponent<Character>();
@@ -13,34 +16,32 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
+        player.currDir = MovDir.NONE;
+        charInTheWay = null;
         if (player == null)
             return;
-        MovDir direction;
+
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
-            direction = MovDir.FORWARD;
+            player.currDir = MovDir.FORWARD;
         }
         else if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            direction = MovDir.BACK;
+            player.currDir = MovDir.BACK;
         }
         else if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            direction = MovDir.LEFT;
+            player.currDir = MovDir.LEFT;
         }
         else if(Input.GetKeyDown(KeyCode.RightArrow))
         {
-            direction = MovDir.RIGHT;
+            player.currDir = MovDir.RIGHT;
         }
         else
         {
             return;
         }
-        Character charInTheWay;
-        Mover.MoveCharacter
-            (player,
-            out charInTheWay,
-            direction,
-            Physics.DefaultRaycastLayers);
+        Mover.MoveCharacter(player, out charInTheWay, true, player.currDir, Physics.DefaultRaycastLayers);
+
     }
 }

@@ -8,6 +8,7 @@ public static class Mover
     public static bool MoveCharacter(
         Character sourceCharacter, 
         out Character hitCharacter, 
+        bool pushHitCharacter,
         MovDir direction,
         LayerMask layerMask)
     {
@@ -20,12 +21,29 @@ public static class Mover
         Physics.Linecast(sourcePos, sourcePos + dir, out rayInfo, layerMask);
         Debug.DrawLine(sourcePos, sourcePos + dir, Color.red);
 
-        //If we hit something, then do no movement and return false
+        //If we hit something, check if it blocks our path
         bool isBlocked = rayInfo.transform != null;
         if (isBlocked)
         {
+            //Check if the blocking thing is a character
             hitCharacter = rayInfo.transform.gameObject.GetComponent<Character>();
-            return false;
+            if (hitCharacter != null)
+            {
+                //If the function cant interact with objects then ignore the hit object and dont move, if it can, do an interact
+                if (!pushHitCharacter)
+                {
+                    return false;
+                }
+                else
+                {
+                    //If the character we interact with tells us that we shouldnt move, we return false and we dont move
+                    //if it doesnt, then we move
+                    if (!hitCharacter.Interact(sourceCharacter))
+                    {
+                        return false;
+                    }
+                }
+            }
         }
 
         //If the way is clear, then move sourceCharacter and return true
