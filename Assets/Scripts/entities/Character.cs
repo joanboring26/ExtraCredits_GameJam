@@ -11,7 +11,7 @@ public class Character : MonoBehaviour
     public float moveSpeed;
     public Transform modelTransform;
     public Coroutine moveModelCoroutine;
-
+    public textBoxScript textBox;
     public virtual bool Interact(Character user)
     {
         return false;

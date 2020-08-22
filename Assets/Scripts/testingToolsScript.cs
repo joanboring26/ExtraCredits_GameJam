@@ -9,8 +9,13 @@ public class testingToolsScript : MonoBehaviour
     [SerializeField] KeyCode decreaseHealthbar;
     [SerializeField] KeyCode speedUpTime;
     [SerializeField] KeyCode showAlert;
+
+    [SerializeField] KeyCode showText;
+    [SerializeField] string textToUse;
     [SerializeField] float timeMultiplier;
     [SerializeField] uiMasterScript ui;
+
+    [SerializeField] textBoxScript textBox;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +36,7 @@ public class testingToolsScript : MonoBehaviour
                 Time.timeScale = 1;
         if(Input.GetKeyDown(showAlert))
             StartCoroutine(ui.ShowAlertText());
+        if(Input.GetKeyDown(showText))
+            StartCoroutine(textBox.SetText(textToUse, 2.0f));
     }
 }

@@ -194,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You are the highest ranking knight in the king's order.
+  m_Text: You are the highest ranking bishop in the king's order.
 --- !u!222 &4300848
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -859,7 +859,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: As the highest ranking knight, you have the honor of defending him from
+  m_Text: As the highest ranking bishop, you have the honor of defending him from
     any that may threaten his life.
 --- !u!222 &1539123979
 CanvasRenderer:
