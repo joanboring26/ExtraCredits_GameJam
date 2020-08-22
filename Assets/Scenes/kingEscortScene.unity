@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.75
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 12ccb828343c3405fb94289774b51aad, type: 2}
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alertText: {fileID: 1204207341}
-  kingHealthBar: {fileID: 0}
+  kingHealthBar: {fileID: 1893199867}
 --- !u!114 &501917583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,6 +921,7 @@ GameObject:
   - component: {fileID: 1516040351}
   - component: {fileID: 1516040350}
   - component: {fileID: 1516040349}
+  - component: {fileID: 1516040352}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -993,6 +994,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 34.999, y: -0.936, z: 0.108}
+--- !u!114 &1516040352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516040348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d247483e216a54397fd08bfb6d0f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knight: {fileID: 0}
 --- !u!1001 &1760219173
 PrefabInstance:
   m_ObjectHideFlags: 0
