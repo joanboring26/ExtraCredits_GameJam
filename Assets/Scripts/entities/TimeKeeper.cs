@@ -1,24 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
-public class TimeKeeper : MonoBehaviour
+public static class TimeKeeper
 {
-    static TimeKeeper instance;
-    public TimeKeeper Instance { get { return instance; } }
+    static List<Character> characters;
 
-
-
-    void Awake()
+    public static void Register(Character character)
     {
-        DoSingletonPattern();
-    }    
+        if (characters == null)
+            characters = new List<Character>();
+        characters.Add(character);
+    }
 
-    void DoSingletonPattern()
+    public static void NextTurn()
     {
-        if (instance != null && this != instance)
-            Destroy(this.gameObject);
-        else
-            instance = this;
+        foreach (var character in characters)
+        {
+            character.CharacterUpdate();
+        }
     }
 }

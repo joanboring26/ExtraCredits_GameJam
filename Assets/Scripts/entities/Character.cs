@@ -12,6 +12,11 @@ public class Character : MonoBehaviour
     public Transform modelTransform;
     public Coroutine moveModelCoroutine;
 
+    private void Awake()
+    {
+        TimeKeeper.Register(this);
+    }
+
     public virtual bool Interact(Character user)
     {
         return false;
