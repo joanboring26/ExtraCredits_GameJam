@@ -22,7 +22,7 @@ public class introMasterScript : MonoBehaviour
 
     private IEnumerator IntroCutscene()
     {
-        yield return new WaitForSeconds(0.01f); //first line won't work without this for some reason
+        yield return null; //next line won't work without this for some reason
         yield return StartCoroutine(textFades[0].TextFadeIn(1.0f)); //you are the highest ranking
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(textFades[0].TextFadeOut(2.0f));
