@@ -55,6 +55,11 @@ public class PlayerMover : MonoBehaviour
         return true;
     }
 
+    //The movements should ONLY be done in 1 unit increment, ie: I move right so dir = 1,0,0
+    public void MoveToDir(Vector3 dir)
+    {
+        transform.position += dir;
+    }
 
     public void MoveInDir(MovDir direction)
     {
