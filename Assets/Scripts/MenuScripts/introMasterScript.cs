@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 public class introMasterScript : MonoBehaviour
 {
     [SerializeField] textFadeScript [] textFades;
+    [SerializeField] AudioSource sound;
+    [SerializeField] AudioClip music;
+    [SerializeField] AudioClip recordScratch;
     float fadeTime = 1;
     float waitTime = 0.5f;
     // Start is called before the first frame update
@@ -22,7 +25,8 @@ public class introMasterScript : MonoBehaviour
 
     private IEnumerator IntroCutscene()
     {
-        yield return null; //next line won't work without this for some reason
+        sound.clip = music;
+        sound.Play();
         yield return StartCoroutine(textFades[0].TextFadeIn(1.0f)); //you are the highest ranking
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(textFades[0].TextFadeOut(2.0f));
@@ -39,6 +43,8 @@ public class introMasterScript : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         StartCoroutine(textFades[5].TextFadeOut(1.5f));
         yield return StartCoroutine(textFades[6].TextFadeIn(1.0f)); //he's the kinda guy
+        sound.clip = recordScratch;
+        sound.Play();
         yield return new WaitForSeconds(1.0f);
         yield return StartCoroutine(textFades[7].TextFadeIn(1.0f));
     }
