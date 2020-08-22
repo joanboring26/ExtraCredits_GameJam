@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     Character player = null;
-
     Character charInTheWay;
 
     private void Awake()

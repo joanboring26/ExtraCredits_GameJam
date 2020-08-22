@@ -44,12 +44,18 @@ public static class Mover
                     }
                 }
             }
+            else
+            {
+                return false;
+            }
         }
 
         //If the way is clear, then move sourceCharacter and return true
         //The movements should ONLY be done in 1 unit increment 
         //ie: I move right so dir = 1,0,0    
+        sourceCharacter.prevModelPos = sourceCharacter.transform.position;
         sourceCharacter.transform.position += dir;
+        sourceCharacter.MoveModelToPos(sourceCharacter.transform.position);
         return true;
     }    
 }

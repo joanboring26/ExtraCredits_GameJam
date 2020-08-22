@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Peasant : Character
 {
+    //Every time a peasant is pushed, be it by another peasant, the player, or the king, their anger limit goes down, 
+    //if it reaches 0, the peasant transforms into an assasin character
+    public int AngerLimit;
     Character charInTheWay;
     public override bool Interact(Character user)
     {
