@@ -8,6 +8,15 @@ public class Peasant : Character
     //if it reaches 0, the peasant transforms into an assasin character
     public int AngerLimit;
     Character charInTheWay;
+    public GameObject corpse;
+
+    public override void Kill(Vector3 impactForce)
+    {
+        GameObject corpseInstance = Instantiate(corpse, transform.position, transform.rotation);
+        corpseInstance.GetComponent<Rigidbody>().AddForce(impactForce, ForceMode.Impulse);
+        Destroy(gameObject);
+    }
+
     public override bool Interact(Character user)
     {
         currDir = user.currDir;
@@ -31,22 +40,14 @@ public class Peasant : Character
                 currDir = MovDir.NONE;
                 return false;
                 break;
+            case CharacterType.ASSASIN:
+                Kill(user.currDir.Vector());
+                return false;
+                break;
             case CharacterType.PLAYER:
                 Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
                 currDir = MovDir.NONE;
                 return false;
-                break;
-            case CharacterType.PLANT:
-                currDir = MovDir.NONE;
-                return true;
-                break;
-            case CharacterType.OBSTACLE:
-                currDir = MovDir.NONE;
-                return true;
-                break;
-            case CharacterType.NONE:
-                currDir = MovDir.NONE;
-                return true;
                 break;
             default:
                 currDir = MovDir.NONE;

@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 66834942}
   - component: {fileID: 66834941}
   - component: {fileID: 66834940}
+  - component: {fileID: 66834939}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -141,6 +142,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &66834939
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66834938}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &66834940
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -198,8 +212,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66834938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0000005, y: -0.5, z: 1}
-  m_LocalScale: {x: 11, y: 1, z: 11}
+  m_LocalPosition: {x: 1.0000005, y: -0.50000006, z: 1.5}
+  m_LocalScale: {x: 17.000015, y: 0.99999994, z: 18}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -268,6 +282,7 @@ MonoBehaviour:
   moveSpeed: 10
   modelTransform: {fileID: 1299664749}
   AngerLimit: 3
+  corpse: {fileID: 1707298890928815373, guid: ba0e49ec38ffb024dbab714d0c963c25, type: 3}
 --- !u!1 &350479500
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,6 +319,7 @@ MonoBehaviour:
   moveSpeed: 10
   modelTransform: {fileID: 929490242}
   AngerLimit: 3
+  corpse: {fileID: 1707298890928815373, guid: ba0e49ec38ffb024dbab714d0c963c25, type: 3}
 --- !u!65 &350479502
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -368,6 +384,7 @@ MonoBehaviour:
   moveSpeed: 10
   modelTransform: {fileID: 1893527813}
   AngerLimit: 3
+  corpse: {fileID: 1707298890928815373, guid: ba0e49ec38ffb024dbab714d0c963c25, type: 3}
 --- !u!65 &352643453
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -515,6 +532,7 @@ MonoBehaviour:
   moveSpeed: 10
   modelTransform: {fileID: 2083014720}
   AngerLimit: 3
+  corpse: {fileID: 1707298890928815373, guid: ba0e49ec38ffb024dbab714d0c963c25, type: 3}
 --- !u!65 &439613790
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1186,12 +1204,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8fc09d103ebed4681d33c1673da30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  type: 4
   currDir: 0
   prevModelPos: {x: 0, y: 0, z: 0}
   moveSpeed: 10
   modelTransform: {fileID: 1737079515}
   kingTransform: {fileID: 961857334}
+  corpse: {fileID: 9065811185369735357, guid: 3a1852cb57dadaa4d8bca1d6bbbfd3da, type: 3}
 --- !u!65 &1901538711
 BoxCollider:
   m_ObjectHideFlags: 0

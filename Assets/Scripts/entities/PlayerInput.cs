@@ -15,8 +15,6 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        player.currDir = MovDir.NONE;
-        charInTheWay = null;
         if (player == null)
             return;
 
@@ -40,7 +38,16 @@ public class PlayerInput : MonoBehaviour
         {
             return;
         }
+        StartCoroutine(UpdateAllCharacters());
+    }
+
+    IEnumerator UpdateAllCharacters()
+    {
         Mover.MoveCharacter(player, out charInTheWay, true, player.currDir, Physics.DefaultRaycastLayers);
+        yield return new WaitForFixedUpdate();
         TimeKeeper.NextTurn();
+
+        player.currDir = MovDir.NONE;
+        charInTheWay = null;
     }
 }
