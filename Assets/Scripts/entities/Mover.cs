@@ -27,25 +27,21 @@ public static class Mover
         {
             //Check if the blocking thing is a character
             hitCharacter = rayInfo.transform.gameObject.GetComponent<Character>();
-            if (hitCharacter != null)
-            {
-                //If the function cant interact with objects then ignore the hit object and dont move, if it can, do an interact
-                if (!pushHitCharacter)
-                {
-                    return false;
-                }
-                //If the character we interact with tells us that we shouldnt move, 
-                //we return false and we dont move
-                //if it doesnt, then we move
-                if (!hitCharacter.Interact(sourceCharacter))
-                {
-                    return false;
-                }                                                    
-            }
-            else
+            if (hitCharacter == null)
+                return false;
+            
+            //If the function cant interact with objects then ignore the hit object and dont move, if it can, do an interact
+            if (!pushHitCharacter)
             {
                 return false;
             }
+            //If the character we interact with tells us that we shouldnt move, 
+            //we return false and we dont move
+            //if it doesnt, then we move
+            if (!hitCharacter.Interact(sourceCharacter))
+            {
+                return false;
+            }                                                                            
         }
 
         //If the way is clear, then move sourceCharacter and return true
