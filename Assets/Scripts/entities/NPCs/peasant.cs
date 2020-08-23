@@ -38,12 +38,12 @@ public class Peasant : Character
                 return false;
             case CharacterType.KING:
                 if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
-                {
-                    //Code that makes the peasant pissed off
-
-                    //
-                    return true;
-                }
+                {
+                    //Code that makes the peasant pissed off
+
+                    //
+                    return true;
+                }
                 currDir = MovDir.NONE;
                 return false;
             case CharacterType.ASSASIN:
@@ -51,7 +51,7 @@ public class Peasant : Character
                 return false;
             case CharacterType.PLAYER:
                 if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
-                    return true;
+                    return true;
                 currDir = MovDir.NONE;
                 return false;
             default:
