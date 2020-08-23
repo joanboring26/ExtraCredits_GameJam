@@ -16,9 +16,9 @@ MonoBehaviour:
   currDir: 0
   prevModelPos: {x: 0, y: 0, z: 0}
   moveSpeed: 10
-  modelTransform: {fileID: 0}
+  modelTransform: {fileID: 5086514302360425091}
   deathForceMultiplier: 8
-  hp: 0
+  hp: 3
 --- !u!114 &1194764935722176937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +133,12 @@ PrefabInstance:
 --- !u!1 &2123040414911518507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5489264956986360917, guid: 29ff2589bde3c96459e0edaf7e2e0a92,
+    type: 3}
+  m_PrefabInstance: {fileID: 5862357849030873982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5086514302360425091 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1715214678752641533, guid: 29ff2589bde3c96459e0edaf7e2e0a92,
     type: 3}
   m_PrefabInstance: {fileID: 5862357849030873982}
   m_PrefabAsset: {fileID: 0}

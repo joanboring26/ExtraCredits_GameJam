@@ -9,16 +9,24 @@ public class Peasant : Character
     //if it reaches 0, the peasant transforms into an assasin character
     public int AngerLimit;
     Character charInTheWay = null;
-    //public GameObject corpse;
 
-    //public override void Kill(Vector3 impactForce)
-    //{
-    //    if (corpse == null)
-    //        return;
-    //    GameObject corpseInstance = Instantiate(corpse, transform.position, transform.rotation);
-    //    corpseInstance.GetComponent<Rigidbody>().AddForce(impactForce, ForceMode.Impulse);
-    //    Destroy(gameObject);
-    //}
+    public AudioSource sndSrc;
+    public AudioClip dead;
+
+    public override void Kill(Vector3 impactForce)
+    {
+        sndSrc.PlayOneShot(dead);
+        TimeKeeper.Deregister(this);
+        Rigidbody rb = modelTransform.gameObject.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            int corpsesLayer = LayerMask.NameToLayer("Corpses");
+            gameObject.layer = corpsesLayer;
+            modelTransform.gameObject.layer = corpsesLayer;
+            rb.isKinematic = false;
+            rb.AddForce(impactForce * deathForceMultiplier, ForceMode.Impulse);
+        }
+    }
 
     public override bool Interact(Character user)
     {

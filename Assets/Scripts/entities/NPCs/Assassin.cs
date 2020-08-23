@@ -8,6 +8,24 @@ public class Assassin : Character
     Character charInTheWay;
     //public GameObject corpse;    
 
+    public AudioSource sndSrc;
+    public AudioClip dead;
+    public float aggroRadius;
+
+    public override void Kill(Vector3 impactForce)
+    {
+        sndSrc.PlayOneShot(dead);
+        TimeKeeper.Deregister(this);
+        Rigidbody rb = modelTransform.gameObject.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            int corpsesLayer = LayerMask.NameToLayer("Corpses");
+            gameObject.layer = corpsesLayer;
+            modelTransform.gameObject.layer = corpsesLayer;
+            rb.isKinematic = false;
+            rb.AddForce(impactForce * deathForceMultiplier, ForceMode.Impulse);
+        }
+    }
 
     private void Start()
     {
@@ -18,24 +36,17 @@ public class Assassin : Character
     }
 
     public override void CharacterUpdate()
-    {        
-        Mover.MoveCharacterToWayPoint(
-            this,
-            out charInTheWay,
-            true,
-            kingTransform.position,
-            Physics.DefaultRaycastLayers);
+    {
+        if ((transform.position - kingTransform.position).magnitude < aggroRadius)
+        {
+            Mover.MoveCharacterToWayPoint(
+                this,
+                out charInTheWay,
+                true,
+                kingTransform.position,
+                Physics.DefaultRaycastLayers);
+        }
     }
-
-    //public override void Kill(Vector3 impactForce)
-    //{
-    //    GameObject corpseInstance = Instantiate(corpse, transform.position, transform.rotation);
-    //    corpseInstance.GetComponent<Rigidbody>().AddForce(
-    //        impactForce * deathForceMultiplier,
-    //        ForceMode.Impulse);
-    //    Destroy(gameObject);
-    //    Destroy(this);
-    //}
 
     public override bool Interact(Character user)
     {

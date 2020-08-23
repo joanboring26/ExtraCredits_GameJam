@@ -30,7 +30,7 @@ public class Character : MonoBehaviour
         return false;
     }
 
-    public void Kill(Vector3 impactForce)
+    public virtual void Kill(Vector3 impactForce)
     {
         TimeKeeper.Deregister(this);
         Rigidbody rb = modelTransform.gameObject.GetComponent<Rigidbody>();
