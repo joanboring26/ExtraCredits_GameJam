@@ -14,17 +14,11 @@ public class Peasant : Character
     public MovDir directionForNextTurn = MovDir.NONE;
     public AudioSource sndSrc;
     public AudioClip dead;
-    [SerializeField] GameObject forwardArrow = null;
-    [SerializeField] GameObject backwardArrow = null;
-    [SerializeField] GameObject leftArrow = null;
-    [SerializeField] GameObject rightArrow = null;
-
+    [SerializeField] GameObject [] movementArrows;
     void Start()
     {
-        forwardArrow.SetActive(false);
-        backwardArrow.SetActive(false);
-        leftArrow.SetActive(false);
-        rightArrow.SetActive(false);
+        foreach(GameObject g in movementArrows)
+            g.SetActive(false);
     }
     public override void Kill(Vector3 impactForce)
     {
@@ -52,11 +46,13 @@ public class Peasant : Character
                 false,
                 directionForNextTurn,
                 Physics.DefaultRaycastLayers);
+            movementArrows[(int)directionForNextTurn].SetActive(false);
         }
         // Pick direction for next turn
         if (Random.value <= chanceToMove)
         {
             directionForNextTurn = (MovDir)Random.Range(0, 4);
+            movementArrows[(int)directionForNextTurn].SetActive(true);
         }
         else
         {

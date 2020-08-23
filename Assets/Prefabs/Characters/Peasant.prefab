@@ -349,10 +349,11 @@ MonoBehaviour:
   directionForNextTurn: 4
   sndSrc: {fileID: 0}
   dead: {fileID: 0}
-  forwardArrow: {fileID: 1653864842}
-  backwardArrow: {fileID: 412586394}
-  leftArrow: {fileID: 1301373665}
-  rightArrow: {fileID: 1062328756}
+  movementArrows:
+  - {fileID: 1653864842}
+  - {fileID: 412586394}
+  - {fileID: 1301373665}
+  - {fileID: 1062328756}
 --- !u!1001 &3837518010688405668
 PrefabInstance:
   m_ObjectHideFlags: 0
