@@ -10,31 +10,32 @@ public class cameraScript : MonoBehaviour
     private Camera thisCam;
     private float rotationX;
     private float rotationY;
+    [SerializeField] 
     void Awake()
     {
         thisCam = transform.GetChild(0).gameObject.GetComponent<Camera>();
     }
-    // Start is called before the first frame update
     void Start()
     {
         transform.SetParent(player.transform);
         transform.position = player.transform.position;
         thisCam.transform.localPosition = offset;
         Cursor.lockState = CursorLockMode.Locked;
-        //transform.localPosition += offset;
     }
-
-    // Update is called once per frame
     void Update()
     {
         rotationX += Input.GetAxis("Mouse Y") * -sensitivity;
         rotationY += Input.GetAxis("Mouse X") * sensitivity;
         rotationX = Mathf.Clamp(rotationX, -50, 25);
     }
-
     void FixedUpdate()
     {
         transform.eulerAngles = new Vector3(rotationX, rotationY, 0);
+    }
+
+    public float GetHorizontalDirection()
+    {
+        return rotationY;
     }
 
 
