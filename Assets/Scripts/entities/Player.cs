@@ -7,6 +7,17 @@ public class Player : Character
     public int hp;
     Character charInTheWay;
 
+    private void FixedUpdate()
+    {
+        // This allows live characters have a rigidbody and move corpses around
+        if (modelTransform == null)
+            return;
+        Rigidbody rb = modelTransform.gameObject.GetComponent<Rigidbody>();
+        if (rb == null)
+            return;
+        rb.velocity = Vector3.zero;
+    }
+
     public override bool Interact(Character user)
     {
         currDir = user.currDir;

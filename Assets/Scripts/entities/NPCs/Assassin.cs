@@ -28,7 +28,7 @@ public class Assassin : Character
     {
         GameObject corpseInstance = Instantiate(corpse, transform.position, transform.rotation);
         corpseInstance.GetComponent<Rigidbody>().AddForce(
-            impactForce * deathForceMultiplier + Vector3.up, 
+            impactForce * deathForceMultiplier, 
             ForceMode.Impulse);
         Destroy(gameObject);
         Destroy(this);
