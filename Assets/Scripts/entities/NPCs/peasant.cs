@@ -14,7 +14,18 @@ public class Peasant : Character
     public MovDir directionForNextTurn = MovDir.NONE;
     public AudioSource sndSrc;
     public AudioClip dead;
+    [SerializeField] GameObject forwardArrow = null;
+    [SerializeField] GameObject backwardArrow = null;
+    [SerializeField] GameObject leftArrow = null;
+    [SerializeField] GameObject rightArrow = null;
 
+    void Start()
+    {
+        forwardArrow.SetActive(false);
+        backwardArrow.SetActive(false);
+        leftArrow.SetActive(false);
+        rightArrow.SetActive(false);
+    }
     public override void Kill(Vector3 impactForce)
     {
         sndSrc.PlayOneShot(dead);
