@@ -30,7 +30,7 @@ public class Player : Character
                 return false;
             case CharacterType.ASSASIN:
                 user.Kill(-user.currDir.Vector());
-                return false;
+                return true;
             case CharacterType.PLAYER:
                 //This shouldn't really trigger, ever, but it's here just in case
                 if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))

@@ -51,6 +51,7 @@ public static class Mover
         sourceCharacter.prevModelPos = sourceCharacter.transform.position;
         sourceCharacter.transform.position += dir;
         sourceCharacter.MoveModelToPos(sourceCharacter.transform.position);
+        sourceCharacter.currDir = MovDir.NONE;
         return true;
     }
 

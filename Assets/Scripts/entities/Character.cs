@@ -5,12 +5,12 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     //This class will only define interaction functions between the cells
-    public CharacterType type;
-    public MovDir currDir;
+    public CharacterType type = CharacterType.NONE;
+    public MovDir currDir = MovDir.NONE;
     public Vector3 prevModelPos;
-    public float moveSpeed;
-    public Transform modelTransform;
-    public Coroutine moveModelCoroutine;
+    public float moveSpeed = 10;
+    public Transform modelTransform = null;
+    public Coroutine moveModelCoroutine = null;
     public float deathForceMultiplier = 8;
 
     private void Awake()
@@ -30,9 +30,18 @@ public class Character : MonoBehaviour
         return false;
     }
 
-    public virtual void Kill(Vector3 impactForce)
+    public void Kill(Vector3 impactForce)
     {
-
+        TimeKeeper.Deregister(this);
+        Rigidbody rb = modelTransform.gameObject.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            int corpsesLayer = LayerMask.NameToLayer("Corpses");
+            gameObject.layer = corpsesLayer;
+            modelTransform.gameObject.layer = corpsesLayer;
+            rb.isKinematic = false;
+            rb.AddForce(impactForce * deathForceMultiplier, ForceMode.Impulse);
+        }
     }
 
     public virtual void CharacterUpdate()

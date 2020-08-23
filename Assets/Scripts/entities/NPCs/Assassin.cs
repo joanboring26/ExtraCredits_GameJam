@@ -6,7 +6,7 @@ public class Assassin : Character
 {
     public Transform kingTransform;
     Character charInTheWay;
-    public GameObject corpse;    
+    //public GameObject corpse;    
 
 
     private void Start()
@@ -27,15 +27,15 @@ public class Assassin : Character
             Physics.DefaultRaycastLayers);
     }
 
-    public override void Kill(Vector3 impactForce)
-    {
-        GameObject corpseInstance = Instantiate(corpse, transform.position, transform.rotation);
-        corpseInstance.GetComponent<Rigidbody>().AddForce(
-            impactForce * deathForceMultiplier, 
-            ForceMode.Impulse);
-        Destroy(gameObject);
-        Destroy(this);
-    }
+    //public override void Kill(Vector3 impactForce)
+    //{
+    //    GameObject corpseInstance = Instantiate(corpse, transform.position, transform.rotation);
+    //    corpseInstance.GetComponent<Rigidbody>().AddForce(
+    //        impactForce * deathForceMultiplier,
+    //        ForceMode.Impulse);
+    //    Destroy(gameObject);
+    //    Destroy(this);
+    //}
 
     public override bool Interact(Character user)
     {

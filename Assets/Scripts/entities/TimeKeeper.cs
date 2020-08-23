@@ -23,11 +23,12 @@ public static class TimeKeeper
 
     public static void NextTurn()
     {
-        foreach (var character in characters)
+        for (int i = characters.Count - 1; i >= 0; i--)
         {
+            Character character = characters[i];
             if (character == null)
                 continue;
             character.CharacterUpdate();
-        }
+        }        
     }
 }

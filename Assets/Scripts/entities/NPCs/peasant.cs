@@ -9,16 +9,16 @@ public class Peasant : Character
     //if it reaches 0, the peasant transforms into an assasin character
     public int AngerLimit;
     Character charInTheWay = null;
-    public GameObject corpse;
+    //public GameObject corpse;
 
-    public override void Kill(Vector3 impactForce)
-    {
-        if (corpse == null)
-            return;
-        GameObject corpseInstance = Instantiate(corpse, transform.position, transform.rotation);
-        corpseInstance.GetComponent<Rigidbody>().AddForce(impactForce, ForceMode.Impulse);
-        Destroy(gameObject);
-    }
+    //public override void Kill(Vector3 impactForce)
+    //{
+    //    if (corpse == null)
+    //        return;
+    //    GameObject corpseInstance = Instantiate(corpse, transform.position, transform.rotation);
+    //    corpseInstance.GetComponent<Rigidbody>().AddForce(impactForce, ForceMode.Impulse);
+    //    Destroy(gameObject);
+    //}
 
     public override bool Interact(Character user)
     {
@@ -37,17 +37,21 @@ public class Peasant : Character
                 currDir = MovDir.NONE;
                 return false;
             case CharacterType.KING:
-                Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
-                //Code that makes the peasant pissed off
+                if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
+                {
+                    //Code that makes the peasant pissed off
 
-                //
+                    //
+                    return true;
+                }
                 currDir = MovDir.NONE;
                 return false;
             case CharacterType.ASSASIN:
                 Kill(user.currDir.Vector());
                 return false;
             case CharacterType.PLAYER:
-                Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
+                if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
+                    return true;
                 currDir = MovDir.NONE;
                 return false;
             default:
