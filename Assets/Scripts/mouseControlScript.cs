@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class mouseControlScript : MonoBehaviour
 {
-    [SerializeField] knightScript knight;
+    [SerializeField] knightScript knight = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class mouseControlScript : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out hit)){
-                if(hit.collider.gameObject.tag == "MoveSpace");
+                if(hit.collider.gameObject.tag == "MoveSpace")
                     CheckMove(hit.collider.gameObject.GetComponent<moveSpaceScript>());
             }
         }

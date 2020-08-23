@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class introMasterScript : MonoBehaviour
 {
-    [SerializeField] textFadeScript [] textFades;
-    [SerializeField] AudioSource sound;
-    [SerializeField] AudioClip music;
-    [SerializeField] AudioClip recordScratch;
-    float fadeTime = 1;
-    float waitTime = 0.5f;
+    [SerializeField] textFadeScript [] textFades = null;
+    [SerializeField] AudioSource sound = null;
+    [SerializeField] AudioClip music = null;
+    [SerializeField] AudioClip recordScratch = null;
+    //float fadeTime = 1;
+    //float waitTime = 0.5f;
     // Start is called before the first frame update
     void Start()
     {

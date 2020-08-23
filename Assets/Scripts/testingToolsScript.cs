@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class testingToolsScript : MonoBehaviour
 {
+    [SerializeField] KeyCode increaseHealthbar = KeyCode.None;
+    [SerializeField] KeyCode decreaseHealthbar = KeyCode.None;
+    [SerializeField] KeyCode speedUpTime = KeyCode.None;
+    [SerializeField] KeyCode showAlert = KeyCode.None;
 
-    [SerializeField] KeyCode increaseHealthbar;
-    [SerializeField] KeyCode decreaseHealthbar;
-    [SerializeField] KeyCode speedUpTime;
-    [SerializeField] KeyCode showAlert;
+    [SerializeField] KeyCode showText = KeyCode.None;
+    [SerializeField] string textToUse = null;
+    [SerializeField] float timeMultiplier = 1;
+    [SerializeField] uiMasterScript ui = null;
 
-    [SerializeField] KeyCode showText;
-    [SerializeField] string textToUse;
-    [SerializeField] float timeMultiplier;
-    [SerializeField] uiMasterScript ui;
-
-    [SerializeField] textBoxScript textBox;
+    [SerializeField] textBoxScript textBox = null;
     // Start is called before the first frame update
     void Start()
     {

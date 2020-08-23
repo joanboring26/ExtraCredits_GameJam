@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class moveSpaceScript : MonoBehaviour
 {
-    [SerializeField] int row;
-    [SerializeField] int column;
+    [SerializeField] int row = 0;
+    [SerializeField] int column = 0;
     // Start is called before the first frame update
     void Start()
     {

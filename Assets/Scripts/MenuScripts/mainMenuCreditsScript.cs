@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class mainMenuCreditsScript : MonoBehaviour
 {
-    [SerializeField] Button mainMenuButton;
-    GameObject [] CreditsObjects;
-    [SerializeField] mainMenuScript mainMenu;
+    [SerializeField] Button mainMenuButton = null;
+    GameObject [] CreditsObjects = null;
+    [SerializeField] mainMenuScript mainMenu = null;
     void Awake()
     {
         mainMenuButton.onClick.AddListener(OnClickMainMenu);

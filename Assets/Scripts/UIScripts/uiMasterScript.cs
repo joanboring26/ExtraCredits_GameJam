@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class uiMasterScript : MonoBehaviour
 {
-    [SerializeField] textFadeScript alertText;
-    [SerializeField] healthbarScript kingHealthBar;
-    [SerializeField] Camera cam;
+    [SerializeField] textFadeScript alertText = null;
+    [SerializeField] healthbarScript kingHealthBar = null;
+    [SerializeField] Camera cam = null;
     // Start is called before the first frame update
     void Start()
     {

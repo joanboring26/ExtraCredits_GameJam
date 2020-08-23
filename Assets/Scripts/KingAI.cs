@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KingAIScript : Character
+public class KingAI : Character
 {
-    private CharacterType thisType = CharacterType.KING;
     [SerializeField] GameObject waypoint = null;
 
     [SerializeField] Vector2 destination;

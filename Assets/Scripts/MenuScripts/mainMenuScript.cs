@@ -5,12 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class mainMenuScript : MonoBehaviour
 {
-    [SerializeField] Button playButton;
-    [SerializeField] Button creditsButton;
-    [SerializeField] Button quitButton;
+    [SerializeField] Button playButton = null;
+    [SerializeField] Button creditsButton = null;
+    [SerializeField] Button quitButton = null;
 
     GameObject [] mainMenuObjects;
-    [SerializeField] mainMenuCreditsScript credits;
+    [SerializeField] mainMenuCreditsScript credits = null;
     void Awake()
     {
         playButton.onClick.AddListener(OnClickPlay);

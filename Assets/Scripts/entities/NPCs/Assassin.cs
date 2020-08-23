@@ -11,7 +11,10 @@ public class Assassin : Character
 
     private void Start()
     {
-        //kingTransform = FindObjectOfType<kingAIScript>();
+        KingAI king = FindObjectOfType<KingAI>();
+        if (king == null)
+            return;
+        kingTransform = king.transform;
     }
 
     public override void CharacterUpdate()
@@ -47,14 +50,12 @@ public class Assassin : Character
                 }
                 currDir = MovDir.NONE;
                 return false;
-                break;
             case CharacterType.KING:
                 //Code where the king dies (in minecraft)
                 user.Kill(currDir.Vector());
 
                 currDir = MovDir.NONE;
                 return false;
-                break;
             case CharacterType.ASSASIN:
                 //Assasins push eachother
                 if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
@@ -62,15 +63,12 @@ public class Assassin : Character
                     return true;
                 }
                 return false;
-                break;
             case CharacterType.PLAYER:
                 Kill(user.currDir.Vector());
                 return false;
-                break;
             default:
                 currDir = MovDir.NONE;
                 return false;
-                break;
         }
     }
 
