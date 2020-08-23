@@ -13,7 +13,7 @@ public static class Mover
         LayerMask layerMask)
     {
         hitCharacter = null;
-        layerMask |= LayerMask.GetMask("Corpses");
+        layerMask &= ~LayerMask.GetMask("Corpses");
 
         //Do raycast
         Vector3 dir = direction.Vector();

@@ -23,7 +23,7 @@ public class Character : MonoBehaviour
     private void OnDestroy()
     {
         TimeKeeper.Deregister(this);
-    }
+    }    
 
     public virtual bool Interact(Character user)
     {
