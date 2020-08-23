@@ -7,7 +7,8 @@ using System;
 using TMPro;
 public class toDoListScript : MonoBehaviour
 {
-    [SerializeField] TextMeshPro listText;
+    [SerializeField] TextMeshProUGUI listText;
+
     public enum ToDoTasks
     {
         [Description("Pick up food at the supermarket.")]
@@ -37,7 +38,7 @@ public class toDoListScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        InitializeList();
     }
 
     // Update is called once per frame
@@ -66,7 +67,10 @@ public class toDoListScript : MonoBehaviour
 
     public void InitializeList()
     {
-        
+        listText.text = "";
+        foreach(string s in listOfTasks){
+            listText.text += "-" + s + "\n";
+        }
     }
 
     public void CrossOut(ToDoTasks task)

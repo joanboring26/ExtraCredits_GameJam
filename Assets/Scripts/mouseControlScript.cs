@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mouseControlScript : MonoBehaviour
+/*public class mouseControlScript : MonoBehaviour
 {
     [SerializeField] knightScript knight;
     // Start is called before the first frame update
@@ -55,3 +55,4 @@ public class mouseControlScript : MonoBehaviour
             knight.MoveToSpace(space);
     }
 }
+*/
