@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class King : Character
+public class KingAI : Character
 {
-    [SerializeField]
-    GameObject[] waypoint = null;
+    [SerializeField] GameObject[] waypoint = null;
 
     public toDoListScript listOfTasks;
     Dictionary<int, Transform> kingObjectives;
-    public int currObjective;
+    int currObjective;
 
     public int ActionDelay;
     int currDelay;
@@ -27,7 +26,7 @@ public class King : Character
     {
         kingObjectives = new Dictionary<int, Transform>();
         currDelay = ActionDelay;
-        for (int i = 0; i < waypoint.Length; i++)
+        for(int i = 0; i < waypoint.Length; i++)
         {
             kingObjectives.Add((int)waypoint[i].GetComponent<ObjBase>().taskType, waypoint[i].transform);
         }
@@ -83,8 +82,7 @@ public class King : Character
                 return false;
             case CharacterType.ASSASIN:
                 Kill(-user.currDir.Vector());
-                Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
-                return false;
+                return true;
             case CharacterType.PLAYER:
                 if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
                 {

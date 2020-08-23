@@ -64,7 +64,7 @@ public class Assassin : Character
             case CharacterType.KING:
                 //Code where the king dies (in minecraft)
                 user.Kill(currDir.Vector());
-
+                Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
                 currDir = MovDir.NONE;
                 return false;
             case CharacterType.ASSASIN:
