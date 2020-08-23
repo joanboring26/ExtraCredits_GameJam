@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class cameraScript : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    [SerializeField] GameObject player = null;
+    private Vector2 offset;
     // Start is called before the first frame update
     void Start()
     {
