@@ -7,9 +7,11 @@ public class Peasant : Character
     //Every time a peasant is pushed, be it by another peasant, the player, 
     //or the king, their anger limit goes down, 
     //if it reaches 0, the peasant transforms into an assasin character
-    public int AngerLimit;
+    //public int AngerLimit;
     Character charInTheWay = null;
-
+    [Range(0,1)]
+    public float chanceToMove = .2f;
+    public MovDir directionForNextTurn = MovDir.NONE;
     public AudioSource sndSrc;
     public AudioClip dead;
 
@@ -25,6 +27,29 @@ public class Peasant : Character
             modelTransform.gameObject.layer = corpsesLayer;
             rb.isKinematic = false;
             rb.AddForce(impactForce * deathForceMultiplier, ForceMode.Impulse);
+        }
+    }
+
+    public override void CharacterUpdate()
+    {
+        // Move in direction set last turn
+        if (directionForNextTurn != MovDir.NONE)
+        {
+            Mover.MoveCharacter(
+                this,
+                out charInTheWay,
+                false,
+                directionForNextTurn,
+                Physics.DefaultRaycastLayers);
+        }
+        // Pick direction for next turn
+        if (Random.value <= chanceToMove)
+        {
+            directionForNextTurn = (MovDir)Random.Range(0, 4);
+        }
+        else
+        {
+            directionForNextTurn = MovDir.NONE;            
         }
     }
 
@@ -45,13 +70,12 @@ public class Peasant : Character
                 currDir = MovDir.NONE;
                 return false;
             case CharacterType.KING:
-                if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
-                {
-                    //Code that makes the peasant pissed off
-
-                    //
-                    return true;
-                }
+                // Peasants are obstacles for the king, so he can't push them
+                //if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
+                //{
+                //    return true;
+                //}
+
                 currDir = MovDir.NONE;
                 return false;
             case CharacterType.ASSASIN:
@@ -59,7 +83,8 @@ public class Peasant : Character
                 return false;
             case CharacterType.PLAYER:
                 if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
-                    return true;
+                    return true;
+
                 currDir = MovDir.NONE;
                 return false;
             default:

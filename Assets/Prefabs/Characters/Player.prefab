@@ -16,7 +16,6 @@ MonoBehaviour:
   currDir: 0
   prevModelPos: {x: 0, y: 0, z: 0}
   moveSpeed: 10
-  modelTransform: {fileID: 5086514302360425091}
   deathForceMultiplier: 8
   hp: 3
 --- !u!114 &1194764935722176937
@@ -31,6 +30,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5eb3beccd1f314d87547b5a8e78e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &5114817722154756689
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807706404776310309}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1603766
+  m_Height: 18.434462
+  m_Direction: 1
+  m_Center: {x: 0.17, y: 8.76223, z: 0}
 --- !u!1001 &5862357849030873982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41,32 +54,42 @@ PrefabInstance:
     - target: {fileID: 1016069130289536710, guid: 29ff2589bde3c96459e0edaf7e2e0a92,
         type: 3}
       propertyPath: m_Height
-      value: 22.012434
+      value: 17.113234
       objectReference: {fileID: 0}
     - target: {fileID: 1016069130289536710, guid: 29ff2589bde3c96459e0edaf7e2e0a92,
         type: 3}
       propertyPath: m_Center.y
-      value: 10.551218
+      value: 8.101618
       objectReference: {fileID: 0}
     - target: {fileID: 1016069130289536710, guid: 29ff2589bde3c96459e0edaf7e2e0a92,
         type: 3}
       propertyPath: m_Radius
-      value: 0.25
+      value: 0.1603766
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016069130289536710, guid: 29ff2589bde3c96459e0edaf7e2e0a92,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016069130289536710, guid: 29ff2589bde3c96459e0edaf7e2e0a92,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1699645487952600879, guid: 29ff2589bde3c96459e0edaf7e2e0a92,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bb0c9adc9b877914399944d8e49a5ccc, type: 2}
+      objectReference: {fileID: 2100000, guid: c108284e4323dce4a9d0fb5b64aa086b, type: 2}
     - target: {fileID: 1710222512229102901, guid: 29ff2589bde3c96459e0edaf7e2e0a92,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300000, guid: 8e406e8a50248f5499b007168c8d1ce1, type: 3}
+      objectReference: {fileID: 4300000, guid: 37fa4b41bc7842542bb795f93ea1073b, type: 3}
     - target: {fileID: 1713183809633407771, guid: 29ff2589bde3c96459e0edaf7e2e0a92,
         type: 3}
       propertyPath: m_Name
-      value: Bishop
+      value: Knight
       objectReference: {fileID: 0}
     - target: {fileID: 5489264956986360917, guid: 29ff2589bde3c96459e0edaf7e2e0a92,
         type: 3}
@@ -136,9 +159,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5862357849030873982}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5086514302360425091 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1715214678752641533, guid: 29ff2589bde3c96459e0edaf7e2e0a92,
+--- !u!1 &5807706404776310309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 126761953372054875, guid: 29ff2589bde3c96459e0edaf7e2e0a92,
     type: 3}
   m_PrefabInstance: {fileID: 5862357849030873982}
   m_PrefabAsset: {fileID: 0}

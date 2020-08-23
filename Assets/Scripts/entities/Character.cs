@@ -6,10 +6,10 @@ public class Character : MonoBehaviour
 {
     //This class will only define interaction functions between the cells
     public CharacterType type = CharacterType.NONE;
-    public MovDir currDir = MovDir.NONE;
-    public Vector3 prevModelPos;
+    [HideInInspector] public MovDir currDir = MovDir.NONE;
+    [HideInInspector] public Vector3 prevModelPos;
     public float moveSpeed = 10;
-    public Transform modelTransform = null;
+    protected Transform modelTransform = null;
     public Coroutine moveModelCoroutine = null;
     public float deathForceMultiplier = 8;
 

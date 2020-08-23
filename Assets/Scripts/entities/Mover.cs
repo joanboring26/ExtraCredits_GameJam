@@ -13,6 +13,8 @@ public static class Mover
         LayerMask layerMask)
     {
         hitCharacter = null;
+        if (direction == MovDir.NONE)
+            return false;
         layerMask &= ~LayerMask.GetMask("Corpses");
 
         //Do raycast

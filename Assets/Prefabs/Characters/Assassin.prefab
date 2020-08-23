@@ -117,7 +117,7 @@ MonoBehaviour:
   kingTransform: {fileID: 0}
   sndSrc: {fileID: 6965502418706432787}
   dead: {fileID: 8300000, guid: 02e4bdc5c3191104aa3feac9d3ef367f, type: 3}
-  aggroRadius: 10
+  aggroRadius: 20
 --- !u!1001 &3220361428158536273
 PrefabInstance:
   m_ObjectHideFlags: 0

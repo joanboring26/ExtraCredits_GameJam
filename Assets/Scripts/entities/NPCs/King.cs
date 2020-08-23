@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KingAI : Character
+public class King : Character
 {
     [SerializeField] GameObject waypoint = null;
-
-    [SerializeField] Vector2 destination;
 
     public int ActionDelay;
     int currDelay;

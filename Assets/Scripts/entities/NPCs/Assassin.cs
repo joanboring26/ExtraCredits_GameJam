@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Assassin : Character
 {
-    public Transform kingTransform;
+    Transform kingTransform;
     Character charInTheWay;
     //public GameObject corpse;    
 
@@ -29,7 +29,7 @@ public class Assassin : Character
 
     private void Start()
     {
-        KingAI king = FindObjectOfType<KingAI>();
+        King king = FindObjectOfType<King>();
         if (king == null)
             return;
         kingTransform = king.transform;

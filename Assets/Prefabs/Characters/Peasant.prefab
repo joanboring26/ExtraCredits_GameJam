@@ -18,7 +18,9 @@ MonoBehaviour:
   moveSpeed: 10
   modelTransform: {fileID: 0}
   deathForceMultiplier: 8
-  AngerLimit: 0
+  chanceToMove: 0.1
+  sndSrc: {fileID: 0}
+  dead: {fileID: 0}
 --- !u!1001 &3837518010688405668
 PrefabInstance:
   m_ObjectHideFlags: 0
