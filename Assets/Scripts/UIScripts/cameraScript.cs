@@ -10,6 +10,7 @@ public class cameraScript : MonoBehaviour
     void Start()
     {
         transform.SetParent(player.transform);
+        Vector3 position = transform.position;
     }
 
     // Update is called once per frame
