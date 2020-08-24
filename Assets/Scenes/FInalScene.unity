@@ -8909,7 +8909,7 @@ Transform:
   - {fileID: 1163721464}
   - {fileID: 1993140972}
   m_Father: {fileID: 0}
-  m_RootOrder: 62
+  m_RootOrder: 63
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1078045189
 AudioSource:
@@ -10443,7 +10443,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 61
+  m_RootOrder: 62
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1347635577
 PrefabInstance:
@@ -10589,6 +10589,11 @@ PrefabInstance:
       propertyPath: currDir
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5441356766589717144, guid: 624c60305ceb0e342811e473de47a669,
+        type: 3}
+      propertyPath: userInterface
+      value: 
+      objectReference: {fileID: 501917582}
     - target: {fileID: 8371727037063118185, guid: 624c60305ceb0e342811e473de47a669,
         type: 3}
       propertyPath: objectives.Array.size
@@ -11078,7 +11083,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 58
+  m_RootOrder: 59
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1398528734 stripped
 MonoBehaviour:
@@ -11296,7 +11301,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 60
+  m_RootOrder: 61
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1419075898
 PrefabInstance:
@@ -13242,7 +13247,7 @@ Transform:
   - {fileID: 2022294058}
   - {fileID: 1594735242}
   m_Father: {fileID: 0}
-  m_RootOrder: 59
+  m_RootOrder: 60
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1668034488
 PrefabInstance:
@@ -15517,7 +15522,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 55
+  m_RootOrder: 56
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1944958029
 PrefabInstance:
@@ -17099,7 +17104,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 53
+  m_RootOrder: 54
   m_LocalEulerAnglesHint: {x: 63.482, y: 34.889, z: 128.474}
 --- !u!1001 &2133357552
 PrefabInstance:
@@ -21021,6 +21026,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2103588649, guid: d8d9b8650a1195347964dc06a6001158, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103588649, guid: d8d9b8650a1195347964dc06a6001158, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103588649, guid: d8d9b8650a1195347964dc06a6001158, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103588649, guid: d8d9b8650a1195347964dc06a6001158, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103588649, guid: d8d9b8650a1195347964dc06a6001158, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3629213660918714496, guid: d8d9b8650a1195347964dc06a6001158,
         type: 3}
       propertyPath: cam
@@ -21079,7 +21104,7 @@ PrefabInstance:
     - target: {fileID: 3629213660918714524, guid: d8d9b8650a1195347964dc06a6001158,
         type: 3}
       propertyPath: m_RootOrder
-      value: 52
+      value: 53
       objectReference: {fileID: 0}
     - target: {fileID: 3629213660918714524, guid: d8d9b8650a1195347964dc06a6001158,
         type: 3}
@@ -22853,7 +22878,7 @@ Transform:
   - {fileID: 2489418457943672970}
   - {fileID: 1521177974}
   m_Father: {fileID: 0}
-  m_RootOrder: 73
+  m_RootOrder: 74
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &5790163831388296711
 LODGroup:
@@ -23465,7 +23490,7 @@ Transform:
   - {fileID: 281475363}
   - {fileID: 233542522}
   m_Father: {fileID: 0}
-  m_RootOrder: 63
+  m_RootOrder: 64
   m_LocalEulerAnglesHint: {x: 0, y: -270, z: 0}
 --- !u!23 &6621580133091191236
 MeshRenderer:
