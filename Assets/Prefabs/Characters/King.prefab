@@ -114,9 +114,6 @@ MonoBehaviour:
   moveSpeed: 10
   deathForceMultiplier: 8
   numberOfHitsToKillKing: 4
-  waypoints: []
-  listOfTasks: {fileID: 0}
-  currObjective: 0
   ActionDelay: 0
   sndSrc: {fileID: 8331931004542957679}
   kingDamaged:
@@ -135,6 +132,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e929e21a471624b9ee4182ae9f59d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectives: []
+  kingTalking: {fileID: 8300000, guid: d67a1b43ef0cd9f48aef7eede8ad8c12, type: 3}
+  grocerTalking: {fileID: 8300000, guid: 3570ee8406344c84d9c9a3d26c01beeb, type: 3}
+  blacksmithTalking: {fileID: 8300000, guid: 61c2ea0692cbb6f47b0bb6e3f111f600, type: 3}
+  priestTalking: {fileID: 8300000, guid: ad44c3d34b9dda8409d07baf5a93f514, type: 3}
+  taxDodgerTalking: {fileID: 8300000, guid: d88f25271c92aaf41ba9630422150087, type: 3}
+  executedTalking: {fileID: 8300000, guid: 6e643ce6a5d2a7640be8ee014ef6c074, type: 3}
 --- !u!1001 &3481395478862045710
 PrefabInstance:
   m_ObjectHideFlags: 0

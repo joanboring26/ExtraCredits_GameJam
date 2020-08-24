@@ -807,6 +807,11 @@ PrefabInstance:
       propertyPath: objectives.Array.data[4].gameObj
       value: 
       objectReference: {fileID: 1594735241}
+    - target: {fileID: 8371727037063118185, guid: 624c60305ceb0e342811e473de47a669,
+        type: 3}
+      propertyPath: kingTalking
+      value: 
+      objectReference: {fileID: 8300000, guid: d67a1b43ef0cd9f48aef7eede8ad8c12, type: 3}
     - target: {fileID: 8970519388848727643, guid: 624c60305ceb0e342811e473de47a669,
         type: 3}
       propertyPath: m_Name
@@ -1626,7 +1631,7 @@ PrefabInstance:
     - target: {fileID: 604829327035889711, guid: 9293548c5de49fa40887bf02873c3abf,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 604829328183321604, guid: 9293548c5de49fa40887bf02873c3abf,
         type: 3}
@@ -1937,7 +1942,7 @@ PrefabInstance:
     - target: {fileID: 4543343449926924444, guid: c51cc30d74d9a224586ffc713479fdc4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c51cc30d74d9a224586ffc713479fdc4, type: 3}

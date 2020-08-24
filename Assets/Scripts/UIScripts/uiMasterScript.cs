@@ -83,4 +83,10 @@ public class uiMasterScript : MonoBehaviour
     {
         toDoList.CrossOut(tasks);
     }
+
+    public void FocusCamera(Vector3 position)
+    {
+        Vector3 newPos = new Vector3(position.x, cam.transform.position.y, position.z);
+        cam.transform.position = newPos;
+    }
 }
