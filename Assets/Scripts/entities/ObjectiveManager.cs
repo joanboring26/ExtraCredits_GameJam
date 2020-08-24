@@ -7,10 +7,13 @@ public class ObjectiveManager : MonoBehaviour
     [System.Serializable]
     class Objective
     {
+        [SerializeField] internal bool completed = false;
         [SerializeField] internal GameObject gameObj = null;
         [SerializeField] internal float radius = 2.5f;
+        [SerializeField] internal toDoListScript.ToDoTasks objType;
     }
     [SerializeField] List<Objective> objectives = new List<Objective>();
+    [SerializeField] List<Objective> completedObjectives = new List<Objective>();
     [SerializeField] AudioClip kingTalking;
     [SerializeField] AudioClip grocerTalking;
     [SerializeField] AudioClip blacksmithTalking;
@@ -21,6 +24,7 @@ public class ObjectiveManager : MonoBehaviour
     uiMasterScript uiScript;
     toDoListScript toDoListScript;
     int currentObjective = 0;
+    int totalObj = 0;
     public Vector3 Waypoint
     {
         get {
@@ -39,25 +43,28 @@ public class ObjectiveManager : MonoBehaviour
         uiScript = FindObjectOfType<uiMasterScript>();
         toDoListScript = FindObjectOfType<toDoListScript>();
         voice = GetComponent<AudioSource>();
+        totalObj = objectives.Count;
     }
 
     public void AttemptToCompleteObjective()
     {
-        // If king is outside objective radius then return
-        float sqrDistanceFromWaypoint = 
-            Vector3.SqrMagnitude(Waypoint - gameObject.transform.position);
-        if (sqrDistanceFromWaypoint > ObjectiveRadius)
+        foreach(Objective obj in objectives)
         {
-            return;
+            // If king is outside objective radius then return
+            float sqrDistanceFromWaypoint = Vector3.SqrMagnitude(obj.gameObj.transform.position - gameObject.transform.position);
+            if (sqrDistanceFromWaypoint < obj.radius && !obj.completed)
+            {
+                obj.completed = true;
+                StartCoroutine(Dialogue((int)obj.objType));
+                toDoListScript.CrossOut(obj.objType);
+                totalObj -= 1;
+                if(totalObj <= 0)
+                {
+                    //Trigger end here
+                }
+            }
         }
-        StartCoroutine(Dialogue(currentObjective));
-        toDoListScript.CrossOut((toDoListScript.ToDoTasks)currentObjective);
-        currentObjective++;
-        if (currentObjective >= objectives.Count)
-        {
-            currentObjective = objectives.Count - 1;
-            // TODO: signal end of game
-        }
+
     }
 
     private IEnumerator Dialogue(int objectiveCount)
