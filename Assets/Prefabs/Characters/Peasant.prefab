@@ -433,15 +433,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8749459613395649777}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48bbc5a86ed066a4da8edf3f10a2dab8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ab477d69a43de841a1b06e61c93ea15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 6
+  type: 0
   currDir: 4
   prevModelPos: {x: 0, y: 0, z: 0}
   moveSpeed: 10
   deathForceMultiplier: 8
-  chanceToMove: 0.2
+  chanceToMove: 0.1
   directionForNextTurn: 4
   sndSrc: {fileID: -9017701083497516209}
   dead: {fileID: 8300000, guid: b7769acbde334244b92715127cfb135f, type: 3}

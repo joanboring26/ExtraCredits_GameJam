@@ -11,28 +11,28 @@ public class Peasant : Character
     //if it reaches 0, the peasant transforms into an assasin character
     //public int AngerLimit;
     Character charInTheWay = null;
-    [Range(0,1)]
+    [Range(0, 1)]
     public float chanceToMove = .2f;
     public MovDir directionForNextTurn = MovDir.NONE;
     public AudioSource sndSrc;
     public AudioClip dead;
-    [SerializeField] GameObject [] movementArrows = null;
+    [SerializeField] GameObject[] movementArrows = null;
 
     void Start()
     {
-        foreach(GameObject g in movementArrows)
+        foreach (GameObject g in movementArrows)
             g.SetActive(false);
     }
     public override void Die(Vector3 impactForce)
     {
         peasantDeaths++;
-        foreach(GameObject g in movementArrows)
+        foreach (GameObject g in movementArrows)
             g.SetActive(false);
         if (sndSrc != null)
         {
             sndSrc.PlayOneShot(dead);
         }
-        base.Die(impactForce);        
+        base.Die(impactForce);
     }
 
     public override void CharacterUpdate()
@@ -56,7 +56,7 @@ public class Peasant : Character
         }
         else
         {
-            directionForNextTurn = MovDir.NONE;            
+            directionForNextTurn = MovDir.NONE;
         }
     }
 

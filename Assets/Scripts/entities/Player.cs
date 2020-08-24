@@ -12,7 +12,6 @@ public class Player : Character
         currDir = user.currDir;        
         if (user.type == CharacterType.ASSASIN) 
         { 
-            user.Die(-user.currDir.Vector());
             return false;
         }
         if (user.type == CharacterType.KING)

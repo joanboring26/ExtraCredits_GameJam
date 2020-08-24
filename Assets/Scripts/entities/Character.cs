@@ -13,7 +13,7 @@ public class Character : MonoBehaviour
     public Coroutine moveModelCoroutine = null;
     public float deathForceMultiplier = 8;
     [HideInInspector] protected uiMasterScript ui;
-    public readonly Vector3 rayStartingHeight = new Vector3(0, .1f, 0);
+    public readonly Vector3 rayStartingHeight = new Vector3(0, .2f, 0);
 
     private void Awake()
     {
