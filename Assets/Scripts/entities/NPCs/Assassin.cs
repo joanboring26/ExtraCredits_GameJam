@@ -6,7 +6,7 @@ public class Assassin : Character
 {
     Transform kingTransform;
     //public GameObject corpse;    
-
+    //[SerializeField] uiMasterScript uiScript;
     public AudioSource sndSrc;
     public AudioClip dead;
     public float aggroRadius;

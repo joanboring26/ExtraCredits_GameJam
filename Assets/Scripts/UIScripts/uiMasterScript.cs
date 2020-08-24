@@ -48,7 +48,7 @@ public class uiMasterScript : MonoBehaviour
         return kingHealthBar.GetHealthValue();
     }
 
-    private void FailureState(){
+    public void FailureState(){
         StartCoroutine(FailureCoroutine());
     }
 
