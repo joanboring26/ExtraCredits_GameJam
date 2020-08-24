@@ -7,6 +7,7 @@ public class TaxCollector : Character
     public AudioSource sndSrc;
     public AudioClip dead;
     King king;
+    public float runRadius;
 
     private void Start()
     {
@@ -47,51 +48,54 @@ public class TaxCollector : Character
 
     public override void CharacterUpdate()
     {
-        // The tax collector should raycast in all 4 directions and go in 
-        // whichever direction has the most space and is away from the king
-        float[] distances = new float[4];
-        int indexOfGreatest = 0;
-        for (int i = 0; i < 4; i++)
+        if ((transform.position - king.transform.position).magnitude < runRadius)
         {
-            // if the ray direction is close to the king's direction 
-            //then continue to the next direction
-            Vector3 kingPos = king.gameObject.transform.position;
-            MovDir rayDir = (MovDir)i;
-            MovDir kingDir;
-            MovDir dontUseThis;
-            Mover.WaypointDirection(
+            // The tax collector should raycast in all 4 directions and go in 
+            // whichever direction has the most space and is away from the king
+            float[] distances = new float[4];
+            int indexOfGreatest = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                // if the ray direction is close to the king's direction 
+                //then continue to the next direction
+                Vector3 kingPos = king.gameObject.transform.position;
+                MovDir rayDir = (MovDir)i;
+                MovDir kingDir;
+                MovDir dontUseThis;
+                Mover.WaypointDirection(
+                    this,
+                    kingPos,
+                    out kingDir,
+                    out dontUseThis);
+                if (rayDir == kingDir)
+                {
+                    distances[i] = 0;
+                    continue;
+                }
+                RaycastHit rayInfo;
+                LayerMask defaultLayer = LayerMask.NameToLayer("Default");
+                Physics.Raycast(
+                    transform.position + rayStartingHeight,
+                    rayDir.Vector(),
+                    out rayInfo,
+                    200,
+                    1);
+                distances[i] = rayInfo.distance;
+                if (rayInfo.distance > distances[indexOfGreatest] ||
+                    rayInfo.distance == 0)
+                {
+                    indexOfGreatest = i;
+                }
+            }
+            Mover.MoveCharacter(
                 this,
-                kingPos,
-                out kingDir,
-                out dontUseThis);
-            if (rayDir == kingDir)
-            {
-                distances[i] = 0;
-                continue;
-            }
-            RaycastHit rayInfo;
-            LayerMask defaultLayer = LayerMask.NameToLayer("Default");                        
-            Physics.Raycast(
-                transform.position + rayStartingHeight, 
-                rayDir.Vector(), 
-                out rayInfo,
-                200,
-                1);
-            distances[i] = rayInfo.distance;
-            if (rayInfo.distance > distances[indexOfGreatest] ||
-                rayInfo.distance == 0)
-            {
-                indexOfGreatest = i;
-            }
-        }
-        Mover.MoveCharacter(
-            this,
-            out charInTheWay,
-            true,
-            (MovDir)indexOfGreatest,
-            Physics.DefaultRaycastLayers);
-        
+                out charInTheWay,
+                true,
+                (MovDir)indexOfGreatest,
+                Physics.DefaultRaycastLayers);
 
+
+        }
     }
 
 }

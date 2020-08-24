@@ -5,7 +5,7 @@ using UnityEngine;
 public class isometricCameraScript : MonoBehaviour
 {
     [SerializeField] GameObject player = null;
-    private Vector3 offset = new Vector3(0, 50, -50);
+    private Vector3 offset = new Vector3(0, 50, 500);
     private Camera cam;
     private float positionX;
     private float positionZ;
@@ -32,6 +32,7 @@ public class isometricCameraScript : MonoBehaviour
         positionX += Input.GetAxis("Mouse X") * moveSensitivity;
         positionZ += Input.GetAxis("Mouse Y") * moveSensitivity;
         positionX = Mathf.Clamp(positionX, -20, 20);
+        //-70, -30
         positionZ = Mathf.Clamp(positionZ, -70, -30);
         cam.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
     }
@@ -39,6 +40,7 @@ public class isometricCameraScript : MonoBehaviour
     void FixedUpdate()
     {
         transform.localPosition = new Vector3(positionX, transform.localPosition.y, positionZ);
+        transform.position = new Vector3(transform.position.x, 100, transform.position.z - 85);
     }
 
 
