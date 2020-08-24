@@ -23,10 +23,9 @@ public class isometricCameraScript : MonoBehaviour
         cam.orthographic = true;
         transform.localPosition = offset;
         positionX = transform.localPosition.x;
-        positionZ = transform.localPosition.z;
+        positionZ = transform.localPosition.z - 50;
         zoomAmount = cam.orthographicSize;
     }
-
     void Update()
     {
         cam.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
@@ -43,7 +42,6 @@ public class isometricCameraScript : MonoBehaviour
         //if(Input.GetKeyDown(KeyCode.E))
         //    transform.localPosition = new Vector3(0,0,0);
     }
-
     void FixedUpdate()
     {
         transform.localPosition = new Vector3(positionX, transform.localPosition.y, positionZ);

@@ -35,8 +35,9 @@ public class EndingScreenScript : MonoBehaviour
 
     public void EnableMenu()
     {
+        Cursor.lockState = CursorLockMode.None;
         foreach(GameObject g in menuObjects)
             g.SetActive(true);
-        peasantText.SetText("And we only lost " + Peasant.peasantDeaths + " along the way!");
+        peasantText.SetText("And we only lost " + Peasant.peasantDeaths + " peasants along the way!");
     }
 }
