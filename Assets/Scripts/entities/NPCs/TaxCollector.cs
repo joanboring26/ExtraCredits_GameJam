@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TaxCollector : Character
 {
-    Character charInTheWay = null;
     public AudioSource sndSrc;
     public AudioClip dead;
     King king;
@@ -50,19 +49,48 @@ public class TaxCollector : Character
     {
         // The tax collector should raycast in all 4 directions and go in 
         // whichever direction has the most space and is away from the king
-        int[] distances = new int[4];
+        float[] distances = new float[4];
+        int indexOfGreatest = 0;
         for (int i = 0; i < 4; i++)
         {
+            // if the ray direction is close to the king's direction 
+            //then continue to the next direction
             Vector3 kingPos = king.gameObject.transform.position;
-            MovDir dir = (MovDir)i;
-            if ()
+            MovDir rayDir = (MovDir)i;
+            MovDir kingDir;
+            MovDir dontUseThis;
+            Mover.WaypointDirection(
+                this,
+                kingPos,
+                out kingDir,
+                out dontUseThis);
+            if (rayDir == kingDir)
+            {
+                distances[i] = 0;
                 continue;
+            }
             RaycastHit rayInfo;
+            LayerMask defaultLayer = LayerMask.NameToLayer("Default");                        
             Physics.Raycast(
                 transform.position + rayStartingHeight, 
-                dir.Vector(), 
-                out rayInfo);
+                rayDir.Vector(), 
+                out rayInfo,
+                200,
+                1);
+            distances[i] = rayInfo.distance;
+            if (rayInfo.distance > distances[indexOfGreatest] ||
+                rayInfo.distance == 0)
+            {
+                indexOfGreatest = i;
+            }
         }
+        Mover.MoveCharacter(
+            this,
+            out charInTheWay,
+            true,
+            (MovDir)indexOfGreatest,
+            Physics.DefaultRaycastLayers);
+        
 
     }
 

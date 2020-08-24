@@ -13,6 +13,9 @@ public static class Mover
         LayerMask layerMask)
     {
         hitCharacter = null;
+        // set sourceCharacter.currDir to direction or else characters
+        // won't be able to push other characters
+        sourceCharacter.currDir = direction;
         if (direction == MovDir.NONE)
             return false;
         layerMask &= ~LayerMask.GetMask("Corpses");
@@ -47,7 +50,7 @@ public static class Mover
             if (!hitCharacter.Interact(sourceCharacter))
             {
                 return false;
-            }                                                                            
+            }
         }
 
         //If the way is clear, then move sourceCharacter and return true
@@ -100,7 +103,7 @@ public static class Mover
         return firstMoveWorked || secondMoveWorked;
     }
 
-    static void WaypointDirection(
+    public static void WaypointDirection(
         Character character, 
         Vector3 waypoint,
         out MovDir primaryDirection,

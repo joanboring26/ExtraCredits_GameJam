@@ -22,8 +22,6 @@ public class King : Character
     public AudioClip kingDead;
     //public int health;
 
-    Character charInTheWay;
-
     void Start()
     {
         kingObjectives = new Dictionary<int, Transform>();
@@ -67,11 +65,7 @@ public class King : Character
         if (user.type == CharacterType.ASSASIN)
         {
             Die(user.currDir.Vector());            
-        }
-        if (user.type == CharacterType.PLAYER)
-        {
-            return false;
-        }
+        }        
         // This character can be pushed and will push other 
         // characters that it is allowed to push
         if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))

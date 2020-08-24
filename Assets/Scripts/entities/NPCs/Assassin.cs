@@ -5,7 +5,6 @@ using UnityEngine;
 public class Assassin : Character
 {
     Transform kingTransform;
-    Character charInTheWay;
     //public GameObject corpse;    
 
     public AudioSource sndSrc;

@@ -10,7 +10,6 @@ public class Peasant : Character
     //or the king, their anger limit goes down, 
     //if it reaches 0, the peasant transforms into an assasin character
     //public int AngerLimit;
-    Character charInTheWay = null;
     [Range(0, 1)]
     public float chanceToMove = .2f;
     public MovDir directionForNextTurn = MovDir.NONE;
@@ -73,7 +72,8 @@ public class Peasant : Character
             currDir = MovDir.NONE;
             return false;
         }
-        if (user.type == CharacterType.ASSASIN)
+        if (user.type == CharacterType.ASSASIN ||
+            user.type == CharacterType.TAXCOLLECTOR)
         {
             Die(user.currDir.Vector());
             return true;

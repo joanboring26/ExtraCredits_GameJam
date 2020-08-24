@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : Character
 {
     public int hp;
-    Character charInTheWay;   
 
     public override bool Interact(Character user)
     {
