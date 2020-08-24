@@ -40,7 +40,8 @@ public class King : Character
         sndSrc.PlayOneShot(kingDamaged[Random.Range(0, kingDamaged.Length)]);
     }
 
-    public override void Kill(Vector3 impactForce)
+    //public override void Kill(Vector3 impactForce)
+    public void Kill(Vector3 impactForce)
     {
         UI.DamageKing(0.25f);
         DamageEffects();
