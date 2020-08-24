@@ -6,6 +6,12 @@ using UnityEngine;
 public static class TimeKeeper
 {
     static List<Character> characters;
+    public static int CharactersCount
+    {
+        get {
+            return characters.Count;
+        }
+    }
 
     public static void Register(Character character)
     {
@@ -21,14 +27,12 @@ public static class TimeKeeper
         characters.Remove(character);
     }
 
-    public static void NextTurn()
-    {
-        for (int i = characters.Count - 1; i >= 0; i--)
-        {
-            Character character = characters[i];
-            if (character == null)
-                continue;
-            character.CharacterUpdate();
-        }        
+    public static void NextTurn(int i)
+    {        
+        Character character = characters[i];
+        if (character == null)
+            return;
+        character.CharacterUpdate();
+              
     }
 }

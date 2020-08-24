@@ -43,6 +43,7 @@ public static class Mover
             //If the character we interact with tells us that we shouldnt move, 
             //we return false and we dont move
             //if it doesnt, then we move
+
             if (!hitCharacter.Interact(sourceCharacter))
             {
                 return false;

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class King : Character
 {
-    [SerializeField]
-    GameObject[] waypoint = null;
+    [SerializeField] int numberOfHitsToKillKing = 4;
+    [SerializeField] GameObject[] waypoint = null;
 
     public toDoListScript listOfTasks;
     Dictionary<int, Transform> kingObjectives;
@@ -41,7 +41,7 @@ public class King : Character
 
     public override void Die(Vector3 impactForce)
     {
-        ui.DamageKing(0.25f);
+        ui.DamageKing(1f / numberOfHitsToKillKing);
         DamageEffects();
 
         if (ui.GetHealthValue() <= 0)
@@ -66,12 +66,11 @@ public class King : Character
         currDir = user.currDir;        
         if (user.type == CharacterType.ASSASIN)
         {
-            Die(user.currDir.Vector());
-            if (ui.GetHealthValue() > 0)
-            {
-                Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
-                return true;
-            }
+            Die(user.currDir.Vector());            
+        }
+        if (user.type == CharacterType.PLAYER)
+        {
+            return false;
         }
         // This character can be pushed and will push other 
         // characters that it is allowed to push
