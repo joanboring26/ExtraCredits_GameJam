@@ -12,6 +12,7 @@ public class isometricCameraScript : MonoBehaviour
     private float moveSensitivity = 3.0f;
     private float zoomAmount;
     private float zoomSensitivity = 10.0f;
+    bool initialCameraPositionSet = false;
     void Awake()
     {
         transform.SetParent(player.transform);
@@ -23,14 +24,18 @@ public class isometricCameraScript : MonoBehaviour
         cam.orthographic = true;
         transform.localPosition = offset;
         positionX = transform.localPosition.x;
-        positionZ = transform.localPosition.z - 50;
+        positionZ = transform.localPosition.z - 570;
         zoomAmount = cam.orthographicSize;
-        SetCameraPosition();
     }
     void Update()
     {
         cam.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
         cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, 6, 20);
+        if (!initialCameraPositionSet)
+        {
+            
+            initialCameraPositionSet = true;
+        }
         if (!Input.GetKey(KeyCode.Mouse0))
         {
             return;
@@ -45,7 +50,7 @@ public class isometricCameraScript : MonoBehaviour
         positionX += Input.GetAxis("Mouse X") * moveSensitivity;
         positionZ += Input.GetAxis("Mouse Y") * moveSensitivity;
         positionX = Mathf.Clamp(positionX, -90, 90);
-        positionZ = Mathf.Clamp(positionZ, -120, 20);
+        positionZ = Mathf.Clamp(positionZ, -190, 20);
 
     }
     void FixedUpdate()
