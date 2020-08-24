@@ -7,6 +7,12 @@ public class TaxCollector : Character
     Character charInTheWay = null;
     public AudioSource sndSrc;
     public AudioClip dead;
+    King king;
+
+    private void Start()
+    {
+        king = FindObjectOfType<King>();
+    }
 
     public override bool Interact(Character user)
     {
@@ -44,13 +50,18 @@ public class TaxCollector : Character
     {
         // The tax collector should raycast in all 4 directions and go in 
         // whichever direction has the most space and is away from the king
-        RaycastHit[] rayInfos = new RaycastHit[4];
+        int[] distances = new int[4];
         for (int i = 0; i < 4; i++)
         {
+            Vector3 kingPos = king.gameObject.transform.position;
+            MovDir dir = (MovDir)i;
+            if ()
+                continue;
+            RaycastHit rayInfo;
             Physics.Raycast(
                 transform.position + rayStartingHeight, 
-                ((MovDir)i).Vector(), 
-                out rayInfos[i]);
+                dir.Vector(), 
+                out rayInfo);
         }
 
     }
