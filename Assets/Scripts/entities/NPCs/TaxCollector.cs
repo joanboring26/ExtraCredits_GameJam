@@ -43,7 +43,16 @@ public class TaxCollector : Character
     public override void CharacterUpdate()
     {
         // The tax collector should raycast in all 4 directions and go in 
-        // whichever direction 
+        // whichever direction has the most space and is away from the king
+        RaycastHit[] rayInfos = new RaycastHit[4];
+        for (int i = 0; i < 4; i++)
+        {
+            Physics.Raycast(
+                transform.position + rayStartingHeight, 
+                ((MovDir)i).Vector(), 
+                out rayInfos[i]);
+        }
+
     }
 
 }

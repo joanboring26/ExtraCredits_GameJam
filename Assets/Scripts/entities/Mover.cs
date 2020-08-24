@@ -19,10 +19,12 @@ public static class Mover
 
         //Do raycast
         Vector3 dir = direction.Vector();
-        Vector3 sourcePos = sourceCharacter.transform.position;
+        Vector3 sourcePos = 
+            sourceCharacter.transform.position + 
+            sourceCharacter.rayStartingHeight;
         RaycastHit rayInfo;
-        Physics.Linecast(sourcePos, sourcePos + dir, out rayInfo, layerMask);
-        Debug.DrawLine(sourcePos, sourcePos + dir, Color.red);
+        Physics.Linecast(sourcePos , sourcePos + dir, out rayInfo, layerMask);
+        //Debug.DrawLine(sourcePos, sourcePos + dir, Color.red);
 
         //If we hit something, check if it blocks our path
         bool isBlocked = rayInfo.transform != null;
