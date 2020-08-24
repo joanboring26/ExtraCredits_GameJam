@@ -8,15 +8,16 @@ public class Player : Character
 
     public override bool Interact(Character user)
     {
-        currDir = user.currDir;        
         if (user.type == CharacterType.ASSASIN) 
-        { 
+        {
+            user.Die(currDir.Vector());
             return false;
         }
         if (user.type == CharacterType.KING)
         {
             return false;
         }
+        currDir = user.currDir;        
             
         // This character can be pushed and will push other 
         // characters that it is allowed to push

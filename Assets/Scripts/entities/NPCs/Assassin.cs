@@ -50,11 +50,12 @@ public class Assassin : Character
     public override bool Interact(Character user)
     {
         currDir = user.currDir;        
-        if (DieByPlayerHoldingShiftKey(user))
+        if(user.type == CharacterType.PLAYER)
         {
+            Die(user.currDir.Vector());
             return true;
         }
-        if (user.type == CharacterType.KING)
+        else if (user.type == CharacterType.KING)
         {
             // If the king tries to walk into an assassin the king dies
             user.Die(-user.currDir.Vector());
