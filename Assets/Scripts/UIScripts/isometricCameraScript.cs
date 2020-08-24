@@ -29,13 +29,17 @@ public class isometricCameraScript : MonoBehaviour
 
     void Update()
     {
+        cam.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
+        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, 6, 20);
+        if (!Input.GetKey(KeyCode.Mouse0))
+        {
+            return;
+        }
         positionX += Input.GetAxis("Mouse X") * moveSensitivity;
         positionZ += Input.GetAxis("Mouse Y") * moveSensitivity;
         positionX = Mathf.Clamp(positionX, -90, 90);
         //-70, -30
         positionZ = Mathf.Clamp(positionZ, -120, 20);
-        cam.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
-        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, 6, 20);
         //if(Input.GetKeyDown(KeyCode.E))
         //    transform.localPosition = new Vector3(0,0,0);
     }
