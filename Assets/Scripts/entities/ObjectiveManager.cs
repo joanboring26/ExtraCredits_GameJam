@@ -65,7 +65,7 @@ public class ObjectiveManager : MonoBehaviour
         string dialogue;
         WaitForSeconds timeBetweenLines = new WaitForSeconds(1.0f);
         switch(objectiveCount){
-            case 1:
+            case 0:
                 voice.clip = kingTalking;
                 voice.Play();
                 dialogue = "Give me two cabbages, and make it quick!";
@@ -76,7 +76,7 @@ public class ObjectiveManager : MonoBehaviour
                 dialogue = "Whatever you say, your highness, *grumble grumble*";
                 yield return StartCoroutine(uiScript.TypeText(dialogue));
                 break;
-            case 2:
+            case 1:
                 voice.clip = kingTalking;
                 voice.Play();
                 dialogue = "Are my bangles ready yet? I've waited all night!";
@@ -87,7 +87,7 @@ public class ObjectiveManager : MonoBehaviour
                 dialogue = "*sigh* Yes, your highness.";
                 yield return StartCoroutine(uiScript.TypeText(dialogue));
                 break;
-            case 3:
+            case 2:
                 voice.clip = kingTalking;
                 voice.Play();
                 dialogue = "Your god is subservient to me. Bless me.";
@@ -98,7 +98,7 @@ public class ObjectiveManager : MonoBehaviour
                 dialogue = "I'm contractually obligated to do so.";
                 yield return StartCoroutine(uiScript.TypeText(dialogue));
                 break;
-            case 4:
+            case 3:
                 voice.clip = kingTalking;
                 voice.Play();
                 dialogue = "There the tax dodger is, after him!";
@@ -109,7 +109,7 @@ public class ObjectiveManager : MonoBehaviour
                 dialogue = "Ahhhhh!";
                 yield return StartCoroutine(uiScript.TypeText(dialogue));
                 break;
-            case 5:
+            case 4:
                 voice.clip = kingTalking;
                 voice.Play();
                 dialogue = "Ah, a false believer. This ought to be good.";
