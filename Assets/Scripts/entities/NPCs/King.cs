@@ -33,7 +33,7 @@ public class King : Character
         {
             movementArrows[i].SetActive(false);
         }
-        movementArrows[(int)currDir].SetActive(true);
+//        movementArrows[(int)currDir].SetActive(true);
     }
 
     public void DamageEffects()
