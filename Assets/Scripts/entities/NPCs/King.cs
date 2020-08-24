@@ -68,6 +68,10 @@ public class King : Character
         {
             Die(user.currDir.Vector());            
         }
+        if (user.type == CharacterType.PLAYER)
+        {
+            return false;
+        }
         // This character can be pushed and will push other 
         // characters that it is allowed to push
         if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))

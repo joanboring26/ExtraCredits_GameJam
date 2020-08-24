@@ -30,7 +30,6 @@ public static class Mover
         bool isBlocked = rayInfo.transform != null;
         if (isBlocked)
         {
-            Debug.Log("isBlocked"); // debugging
             //Check if the blocking thing is a character
             hitCharacter = rayInfo.transform.gameObject.GetComponent<Character>();
             if (hitCharacter == null)
