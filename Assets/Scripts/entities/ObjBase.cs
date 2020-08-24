@@ -13,22 +13,21 @@ public class ObjBase:Character
 
     }
 
-    public override bool Interact(Character user)
-    {
-        currDir = user.currDir;
-        if (user.type == CharacterType.KING)
-        {
-            completed();
-            //The king can push around the player
-            king.listOfTasks.CrossOut(taskType);
-            currDir = MovDir.NONE;
-            Destroy(this);
-            return false;
-        }
-        else
-        {
-            currDir = MovDir.NONE;
-            return false;
-        }
-    }
+    //public override bool Interact(Character user)
+    //{
+    //    currDir = user.currDir;
+    //    if (user.type == CharacterType.KING)
+    //    {
+    //        completed();
+    //        king.listOfTasks.CrossOut(taskType);
+    //        currDir = MovDir.NONE;
+    //        Destroy(this);
+    //        return false;
+    //    }
+    //    else
+    //    {
+    //        currDir = MovDir.NONE;
+    //        return false;
+    //    }
+    //}
 }

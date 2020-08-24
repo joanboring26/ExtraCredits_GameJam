@@ -6,12 +6,7 @@ using UnityEngine;
 public class King : Character
 {
     [SerializeField] int numberOfHitsToKillKing = 4;
-    [SerializeField] GameObject[] waypoint = null;
-
-    public toDoListScript listOfTasks;
-    Dictionary<int, Transform> kingObjectives;
-    public int currObjective;
-
+    ObjectiveManager objectiveManager;
     public int ActionDelay;
     int currDelay;
 
@@ -24,12 +19,8 @@ public class King : Character
 
     void Start()
     {
-        kingObjectives = new Dictionary<int, Transform>();
         currDelay = ActionDelay;
-        for (int i = 0; i < waypoint.Length; i++)
-        {
-            kingObjectives.Add((int)waypoint[i].GetComponent<ObjBase>().taskType, waypoint[i].transform);
-        }
+        objectiveManager = GetComponent<ObjectiveManager>();
     }
 
     public void DamageEffects()
@@ -80,10 +71,8 @@ public class King : Character
     {
         if (currDelay <= 0)
         {
-            currDelay = ActionDelay;
-            if (waypoint == null)
-                return;
-            Vector3 waypointPos = waypoint[currObjective].transform.position;
+            currDelay = ActionDelay;            
+            Vector3 waypointPos = objectiveManager.Waypoint;
             Character hitCharacter = null;
             if (!Mover.MoveCharacterToWayPoint(
                 this,
@@ -99,10 +88,11 @@ public class King : Character
                 -waypointPos,
                 Physics.DefaultRaycastLayers);
             }
+            objectiveManager.AttemptToCompleteObjective();
         }
         else
         {
             currDelay -= 1;
         }
-    }
+    }    
 }
