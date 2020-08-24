@@ -8,19 +8,29 @@ public class introMasterScript : MonoBehaviour
     [SerializeField] AudioSource sound = null;
     [SerializeField] AudioClip music = null;
     [SerializeField] AudioClip recordScratch = null;
+    [SerializeField] GameObject introText = null;
+    [SerializeField] GameObject instructions = null;
     //float fadeTime = 1;
     //float waitTime = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(IntroCutscene());
+        instructions.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
-            SceneManager.LoadScene("kingEscortScene");
+        if(Input.GetKeyDown(KeyCode.Return)){
+            StopCoroutine(IntroCutscene());
+            if(!instructions.activeSelf){
+                introText.SetActive(false);
+                instructions.SetActive(true);
+            }
+            else
+                SceneManager.LoadScene("kingEscortScene");
+        }
     }
 
     private IEnumerator IntroCutscene()
