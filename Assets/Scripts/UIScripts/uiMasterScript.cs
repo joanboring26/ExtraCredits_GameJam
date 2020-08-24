@@ -67,7 +67,7 @@ public class uiMasterScript : MonoBehaviour
         StartCoroutine(TypeText(text));
     }
 
-    private IEnumerator TypeText(string text)
+    public IEnumerator TypeText(string text)
     {
         WaitForSeconds wait = new WaitForSeconds(0.1f);
         for(int i = 0; i < text.Length; i++){
