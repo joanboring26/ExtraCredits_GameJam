@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 540723573}
   - component: {fileID: 540723575}
   - component: {fileID: 540723574}
+  - component: {fileID: 962214839021902529}
   m_Layer: 0
   m_Name: TaxCollection
   m_TagString: Untagged
@@ -56,7 +57,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 40, y: 2, z: 9}
+  m_Size: {x: 41, y: 2, z: 9}
   m_Center: {x: -10, y: 0, z: 7.5}
 --- !u!65 &540723569
 BoxCollider:
@@ -70,7 +71,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 7, y: 2, z: 2}
-  m_Center: {x: -0.5, y: 0, z: 13}
+  m_Center: {x: 0, y: 0, z: 12.5}
 --- !u!65 &540723568
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -83,7 +84,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 7, y: 2, z: 2}
-  m_Center: {x: -20.5, y: 0, z: 13}
+  m_Center: {x: -20, y: 0, z: 12.5}
 --- !u!65 &540723572
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -95,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 40, y: 2, z: 9}
-  m_Center: {x: -10, y: 0, z: -7.5}
+  m_Size: {x: 41, y: 2, z: 10}
+  m_Center: {x: -10, y: 0, z: -8.5}
 --- !u!65 &540723571
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -108,8 +109,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7, y: 2, z: 3}
-  m_Center: {x: -20.5, y: 0, z: -3.5}
+  m_Size: {x: 7, y: 2, z: 4}
+  m_Center: {x: -20, y: 0, z: -4.5}
 --- !u!65 &540723573
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -147,8 +148,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 1, z: 7}
+  m_Size: {x: 3, y: 2, z: 7}
   m_Center: {x: -44, y: 0, z: 0}
+--- !u!65 &962214839021902529
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199113944847869423}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 2, z: 1}
+  m_Center: {x: -32.5, y: 0, z: -10}
 --- !u!1001 &1391644339241612484
 PrefabInstance:
   m_ObjectHideFlags: 0
