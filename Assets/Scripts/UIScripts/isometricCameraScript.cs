@@ -25,6 +25,7 @@ public class isometricCameraScript : MonoBehaviour
         positionX = transform.localPosition.x;
         positionZ = transform.localPosition.z - 50;
         zoomAmount = cam.orthographicSize;
+        SetCameraPosition();
     }
     void Update()
     {
@@ -34,13 +35,18 @@ public class isometricCameraScript : MonoBehaviour
         {
             return;
         }
+        SetCameraPosition();
+        //-70, -30
+        //if(Input.GetKeyDown(KeyCode.E))
+        //    transform.localPosition = new Vector3(0,0,0);
+    }
+    void SetCameraPosition()
+    {
         positionX += Input.GetAxis("Mouse X") * moveSensitivity;
         positionZ += Input.GetAxis("Mouse Y") * moveSensitivity;
         positionX = Mathf.Clamp(positionX, -90, 90);
-        //-70, -30
         positionZ = Mathf.Clamp(positionZ, -120, 20);
-        //if(Input.GetKeyDown(KeyCode.E))
-        //    transform.localPosition = new Vector3(0,0,0);
+
     }
     void FixedUpdate()
     {
