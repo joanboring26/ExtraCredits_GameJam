@@ -4782,6 +4782,26 @@ PrefabInstance:
       propertyPath: objectives.Array.data[4].gameObj
       value: 
       objectReference: {fileID: 1594735241}
+    - target: {fileID: 8371727037063118185, guid: 624c60305ceb0e342811e473de47a669,
+        type: 3}
+      propertyPath: grocerTalking
+      value: 
+      objectReference: {fileID: 8300000, guid: 3570ee8406344c84d9c9a3d26c01beeb, type: 3}
+    - target: {fileID: 8371727037063118185, guid: 624c60305ceb0e342811e473de47a669,
+        type: 3}
+      propertyPath: blacksmithTalking
+      value: 
+      objectReference: {fileID: 8300000, guid: 61c2ea0692cbb6f47b0bb6e3f111f600, type: 3}
+    - target: {fileID: 8371727037063118185, guid: 624c60305ceb0e342811e473de47a669,
+        type: 3}
+      propertyPath: kingTalking
+      value: 
+      objectReference: {fileID: 8300000, guid: d67a1b43ef0cd9f48aef7eede8ad8c12, type: 3}
+    - target: {fileID: 8371727037063118185, guid: 624c60305ceb0e342811e473de47a669,
+        type: 3}
+      propertyPath: priestTalking
+      value: 
+      objectReference: {fileID: 8300000, guid: ad44c3d34b9dda8409d07baf5a93f514, type: 3}
     - target: {fileID: 8970519388848727643, guid: 624c60305ceb0e342811e473de47a669,
         type: 3}
       propertyPath: m_Name
