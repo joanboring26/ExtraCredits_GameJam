@@ -26,6 +26,8 @@ public class Peasant : Character
     public override void Die(Vector3 impactForce)
     {
         peasantDeaths++;
+        foreach(GameObject g in movementArrows)
+            g.SetActive(false);
         if (sndSrc != null)
         {
             sndSrc.PlayOneShot(dead);
