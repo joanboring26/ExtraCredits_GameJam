@@ -33,7 +33,7 @@ public class isometricCameraScript : MonoBehaviour
         positionZ += Input.GetAxis("Mouse Y") * moveSensitivity;
         positionX = Mathf.Clamp(positionX, -20, 20);
         //-70, -30
-        positionZ = Mathf.Clamp(positionZ, -70, -30);
+        positionZ = Mathf.Clamp(positionZ, -70, 0);
         cam.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
     }
 

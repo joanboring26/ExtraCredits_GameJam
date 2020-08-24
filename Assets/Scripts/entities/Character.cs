@@ -6,7 +6,7 @@ public class Character : MonoBehaviour
 {
     //This class will only define interaction functions between the cells
     public CharacterType type = CharacterType.NONE;
-    [HideInInspector] public MovDir currDir = MovDir.NONE;
+    public MovDir currDir = MovDir.NONE;
     [HideInInspector] public Vector3 prevModelPos;
     public float moveSpeed = 10;
     protected Transform modelTransform = null;

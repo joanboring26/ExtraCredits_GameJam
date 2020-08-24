@@ -19,27 +19,19 @@ public class PlayerInput : MonoBehaviour
         if (player == null)
             return;
 
-        if (
-            Input.GetKeyDown(KeyCode.UpArrow) ||
-            Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             player.currDir = MovDir.FORWARD;
         }
-        else if(
-            Input.GetKeyDown(KeyCode.DownArrow) ||
-            Input.GetKeyDown(KeyCode.S))
+        else if(Input.GetKeyDown(KeyCode.DownArrow))
         {
             player.currDir = MovDir.BACK;
         }
-        else if(
-            Input.GetKeyDown(KeyCode.LeftArrow) ||
-            Input.GetKeyDown(KeyCode.A))
+        else if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
             player.currDir = MovDir.LEFT;
         }
-        else if(
-            Input.GetKeyDown(KeyCode.RightArrow) ||
-            Input.GetKeyDown(KeyCode.D))
+        else if(Input.GetKeyDown(KeyCode.RightArrow))
         {
             player.currDir = MovDir.RIGHT;
         }
