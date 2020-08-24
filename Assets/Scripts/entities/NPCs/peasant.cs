@@ -23,14 +23,14 @@ public class Peasant : Character
         foreach(GameObject g in movementArrows)
             g.SetActive(false);
     }
-    public override void Kill(Vector3 impactForce)
+    public override void Die(Vector3 impactForce)
     {
         peasantDeaths++;
         if (sndSrc != null)
         {
             sndSrc.PlayOneShot(dead);
         }
-        base.Kill(impactForce);        
+        base.Die(impactForce);        
     }
 
     public override void CharacterUpdate()
@@ -69,7 +69,7 @@ public class Peasant : Character
         }
         if (user.type == CharacterType.ASSASIN)
         {
-            Kill(user.currDir.Vector());
+            Die(user.currDir.Vector());
             return true;
         }
         // This character can be pushed and will push other 

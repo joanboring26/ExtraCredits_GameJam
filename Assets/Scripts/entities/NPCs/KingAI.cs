@@ -37,7 +37,7 @@ public class KingAI : Character
         sndSrc.PlayOneShot(kingDamaged[Random.Range(0, kingDamaged.Length)]);
     }
 
-    public override void Kill(Vector3 impactForce)
+    public override void Die(Vector3 impactForce)
     {
         health -= 1;
         DamageEffects();
@@ -81,7 +81,7 @@ public class KingAI : Character
                 currDir = MovDir.NONE;
                 return false;
             case CharacterType.ASSASIN:
-                Kill(-user.currDir.Vector());
+                Die(-user.currDir.Vector());
                 return true;
             case CharacterType.PLAYER:
                 if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))

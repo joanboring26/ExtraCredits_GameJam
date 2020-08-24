@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class King : Character
 {
-    [SerializeField]
-    GameObject[] waypoint = null;
+    [SerializeField] uiMasterScript uiMasterScript = null;
+    [SerializeField] GameObject[] waypoint = null;
 
     public toDoListScript listOfTasks;
     Dictionary<int, Transform> kingObjectives;
@@ -26,6 +26,7 @@ public class King : Character
 
     void Start()
     {
+        uiMasterScript = FindObjectOfType<uiMasterScript>();
         kingObjectives = new Dictionary<int, Transform>();
         currDelay = ActionDelay;
         for (int i = 0; i < waypoint.Length; i++)
@@ -39,9 +40,10 @@ public class King : Character
         sndSrc.PlayOneShot(kingDamaged[Random.Range(0, kingDamaged.Length)]);
     }
 
-    public override void Kill(Vector3 impactForce)
+    public override void Die(Vector3 impactForce)
     {
         health -= 1;
+        uiMasterScript.DamageKing(1);
         DamageEffects();
 
         if (health <= 0)
@@ -66,7 +68,7 @@ public class King : Character
         currDir = user.currDir;        
         if (user.type == CharacterType.ASSASIN)
         {
-            Kill(user.currDir.Vector());
+            Die(user.currDir.Vector());
             if (health > 0)
             {
                 Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);

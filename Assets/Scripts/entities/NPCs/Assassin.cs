@@ -12,7 +12,7 @@ public class Assassin : Character
     public AudioClip dead;
     public float aggroRadius;
 
-    public override void Kill(Vector3 impactForce)
+    public override void Die(Vector3 impactForce)
     {
         sndSrc.PlayOneShot(dead);
         TimeKeeper.Deregister(this);
@@ -53,13 +53,13 @@ public class Assassin : Character
         currDir = user.currDir;        
         if (user.type == CharacterType.PLAYER)
         {
-            Kill(currDir.Vector());
+            Die(currDir.Vector());
             return true;
         }
         if (user.type == CharacterType.KING)
         {
             // If the king tries to walk into an assassin the king dies
-            user.Kill(currDir.Vector());
+            user.Die(-user.currDir.Vector());
             return false;
         }
 

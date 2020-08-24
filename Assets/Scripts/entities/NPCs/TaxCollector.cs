@@ -13,7 +13,7 @@ public class TaxCollector : Character
         currDir = user.currDir;
         if (user.type == CharacterType.ASSASIN)
         {
-            Kill(user.currDir.Vector());
+            Die(user.currDir.Vector());
             return true;
         }
         
@@ -27,13 +27,13 @@ public class TaxCollector : Character
         return false;
     }
 
-    public override void Kill(Vector3 impactForce)
+    public override void Die(Vector3 impactForce)
     {
         if (sndSrc != null)
         {
             sndSrc.PlayOneShot(dead);
         }
-        base.Kill(impactForce);
+        base.Die(impactForce);
     }
 
     public override void CharacterUpdate()
