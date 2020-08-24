@@ -12,9 +12,11 @@ public class Character : MonoBehaviour
     protected Transform modelTransform = null;
     public Coroutine moveModelCoroutine = null;
     public float deathForceMultiplier = 8;
+    [HideInInspector] protected uiMasterScript ui;
 
     private void Awake()
     {
+        ui = FindObjectOfType<uiMasterScript>();
         TimeKeeper.Register(this);
         if (transform.childCount > 0)
             modelTransform = transform.GetChild(0);

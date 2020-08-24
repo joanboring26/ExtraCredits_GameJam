@@ -42,7 +42,8 @@ public class TaxCollector : Character
 
     public override void CharacterUpdate()
     {
-        // The tax collector should run away from the King
+        // The tax collector should raycast in all 4 directions and go in 
+        // whichever direction 
     }
 
 }

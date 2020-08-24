@@ -17,7 +17,6 @@ public class King : Character
 
     //This will be the king's healthbar object
     //public GameObject KingHealthBar;
-    [SerializeField] uiMasterScript UI;
     public AudioSource sndSrc;
     public AudioClip[] kingDamaged;
     public AudioClip kingDead;
@@ -27,7 +26,6 @@ public class King : Character
 
     void Start()
     {
-        UI = FindObjectOfType<uiMasterScript>();
         kingObjectives = new Dictionary<int, Transform>();
         currDelay = ActionDelay;
         for (int i = 0; i < waypoint.Length; i++)
@@ -43,10 +41,10 @@ public class King : Character
 
     public override void Die(Vector3 impactForce)
     {
-        UI.DamageKing(0.25f);
+        ui.DamageKing(0.25f);
         DamageEffects();
 
-        if (UI.GetHealthValue() <= 0)
+        if (ui.GetHealthValue() <= 0)
         {
             TimeKeeper.Deregister(this);
             Rigidbody rb = modelTransform.gameObject.GetComponent<Rigidbody>();
@@ -69,7 +67,7 @@ public class King : Character
         if (user.type == CharacterType.ASSASIN)
         {
             Die(user.currDir.Vector());
-            if (UI.GetHealthValue() > 0)
+            if (ui.GetHealthValue() > 0)
             {
                 Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
                 return true;
