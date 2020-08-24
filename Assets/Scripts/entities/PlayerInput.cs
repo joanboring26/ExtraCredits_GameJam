@@ -60,7 +60,11 @@ public class PlayerInput : MonoBehaviour
     {
         Mover.MoveCharacter(player, out charInTheWay, true, player.currDir, Physics.DefaultRaycastLayers);
         yield return new WaitForFixedUpdate();
-        TimeKeeper.NextTurn();
+        for (int i = TimeKeeper.CharactersCount - 1; i >= 0; i--)
+        {
+            TimeKeeper.NextTurn(i);
+            yield return new WaitForFixedUpdate();
+        }
 
         player.currDir = MovDir.NONE;
         charInTheWay = null;
