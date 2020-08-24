@@ -5,7 +5,7 @@ using UnityEngine;
 public class Peasant : Character
 {
     public static int peasantDeaths = 0;
-
+    public static int peasantStartingCount = 0;
     //Every time a peasant is pushed, be it by another peasant, the player, 
     //or the king, their anger limit goes down, 
     //if it reaches 0, the peasant transforms into an assasin character
@@ -19,6 +19,7 @@ public class Peasant : Character
 
     void Start()
     {
+        peasantStartingCount++;
         foreach (GameObject g in movementArrows)
             g.SetActive(false);
     }
