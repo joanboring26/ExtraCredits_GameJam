@@ -50,6 +50,7 @@ public class ObjectiveManager : MonoBehaviour
         {
             return;
         }
+        StartCoroutine(Dialogue(currentObjective));
         toDoListScript.CrossOut((toDoListScript.ToDoTasks)currentObjective);
         currentObjective++;
         if (currentObjective >= objectives.Count)

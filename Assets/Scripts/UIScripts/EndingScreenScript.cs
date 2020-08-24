@@ -15,6 +15,7 @@ public class EndingScreenScript : MonoBehaviour
     {
         mainMenuButton.onClick.AddListener(OnClickMainMenu);
         quitButton.onClick.AddListener(OnClickQuit);
+        menuObjects = GameObject.FindGameObjectsWithTag("EndingScreenOnly");
     }
     void Start()
     {

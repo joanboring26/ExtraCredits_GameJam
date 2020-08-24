@@ -31,16 +31,19 @@ public class isometricCameraScript : MonoBehaviour
     {
         positionX += Input.GetAxis("Mouse X") * moveSensitivity;
         positionZ += Input.GetAxis("Mouse Y") * moveSensitivity;
-        positionX = Mathf.Clamp(positionX, -20, 20);
+        positionX = Mathf.Clamp(positionX, -90, 90);
         //-70, -30
-        positionZ = Mathf.Clamp(positionZ, -70, -30);
+        positionZ = Mathf.Clamp(positionZ, -120, 20);
         cam.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
+        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, 10, 30);
+        //if(Input.GetKeyDown(KeyCode.E))
+        //    transform.localPosition = new Vector3(0,0,0);
     }
 
     void FixedUpdate()
     {
         transform.localPosition = new Vector3(positionX, transform.localPosition.y, positionZ);
-        transform.position = new Vector3(transform.position.x, 100, transform.position.z - 85);
+        //transform.position = new Vector3(transform.position.x, 100, transform.position.z - 85);
     }
 
 
