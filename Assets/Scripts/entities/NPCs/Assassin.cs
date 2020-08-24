@@ -51,9 +51,8 @@ public class Assassin : Character
     public override bool Interact(Character user)
     {
         currDir = user.currDir;        
-        if (user.type == CharacterType.PLAYER)
+        if (DieByPlayerHoldingShiftKey(user))
         {
-            Die(currDir.Vector());
             return true;
         }
         if (user.type == CharacterType.KING)

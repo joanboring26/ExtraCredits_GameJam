@@ -15,6 +15,10 @@ public class Player : Character
             user.Die(-user.currDir.Vector());
             return false;
         }
+        if (user.type == CharacterType.KING)
+        {
+            return false;
+        }
             
         // This character can be pushed and will push other 
         // characters that it is allowed to push

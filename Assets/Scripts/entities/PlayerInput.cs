@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
 {
     Character player = null;
     Character charInTheWay;
+    public static bool isKillingMove = false;
 
     private void Awake()
     {
@@ -46,6 +47,12 @@ public class PlayerInput : MonoBehaviour
         {
             return;
         }
+        // check if the player is holding shift to do a kill
+        if (Input.GetKey(KeyCode.LeftShift) ||
+            Input.GetKey(KeyCode.RightShift))
+        {
+            isKillingMove = true;
+        }
         StartCoroutine(UpdateAllCharacters());
     }
 
@@ -57,5 +64,6 @@ public class PlayerInput : MonoBehaviour
 
         player.currDir = MovDir.NONE;
         charInTheWay = null;
+        isKillingMove = false;
     }
 }

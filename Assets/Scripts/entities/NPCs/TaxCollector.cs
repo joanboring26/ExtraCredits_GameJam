@@ -11,6 +11,10 @@ public class TaxCollector : Character
     public override bool Interact(Character user)
     {
         currDir = user.currDir;
+        if (DieByPlayerHoldingShiftKey(user))
+        {
+            return true;
+        }
         if (user.type == CharacterType.ASSASIN)
         {
             Die(user.currDir.Vector());
@@ -38,7 +42,7 @@ public class TaxCollector : Character
 
     public override void CharacterUpdate()
     {
-
+        // The tax collector should run away from the King
     }
 
 }

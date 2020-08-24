@@ -62,6 +62,10 @@ public class Peasant : Character
     {
         currDir = user.currDir;
 
+        if (DieByPlayerHoldingShiftKey(user))
+        {
+            return true;
+        }
         if (user.type == CharacterType.KING)
         {
             currDir = MovDir.NONE;

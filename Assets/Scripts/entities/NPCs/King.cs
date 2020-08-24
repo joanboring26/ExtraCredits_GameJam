@@ -27,6 +27,7 @@ public class King : Character
 
     void Start()
     {
+        UI = FindObjectOfType<uiMasterScript>();
         kingObjectives = new Dictionary<int, Transform>();
         currDelay = ActionDelay;
         for (int i = 0; i < waypoint.Length; i++)
@@ -40,8 +41,7 @@ public class King : Character
         sndSrc.PlayOneShot(kingDamaged[Random.Range(0, kingDamaged.Length)]);
     }
 
-    //public override void Kill(Vector3 impactForce)
-    public void Kill(Vector3 impactForce)
+    public override void Die(Vector3 impactForce)
     {
         UI.DamageKing(0.25f);
         DamageEffects();
@@ -68,7 +68,7 @@ public class King : Character
         currDir = user.currDir;        
         if (user.type == CharacterType.ASSASIN)
         {
-            Kill(user.currDir.Vector());
+            Die(user.currDir.Vector());
             if (UI.GetHealthValue() > 0)
             {
                 Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
@@ -94,12 +94,20 @@ public class King : Character
                 return;
             Vector3 waypointPos = waypoint[currObjective].transform.position;
             Character hitCharacter = null;
-            Mover.MoveCharacterToWayPoint(
+            if (!Mover.MoveCharacterToWayPoint(
                 this,
                 out hitCharacter,
                 true,
                 waypointPos,
+                Physics.DefaultRaycastLayers))
+            {
+                Mover.MoveCharacterToWayPoint(
+                this,
+                out hitCharacter,
+                true,
+                -waypointPos,
                 Physics.DefaultRaycastLayers);
+            }
         }
         else
         {

@@ -30,6 +30,17 @@ public class Character : MonoBehaviour
         return false;
     }
 
+    protected bool DieByPlayerHoldingShiftKey(Character user)
+    {
+        if (user.type == CharacterType.PLAYER &&
+            PlayerInput.isKillingMove)
+        {
+            Die(user.currDir.Vector());
+            return true;
+        }
+        return false;
+    }
+
     public virtual void Die(Vector3 impactForce)
     {
         TimeKeeper.Deregister(this);
