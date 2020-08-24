@@ -60,7 +60,7 @@ public class ObjectiveManager : MonoBehaviour
                 totalObj -= 1;
                 if(totalObj <= 0)
                 {
-                    //Trigger end here
+                    uiScript.SuccessState();
                 }
             }
         }

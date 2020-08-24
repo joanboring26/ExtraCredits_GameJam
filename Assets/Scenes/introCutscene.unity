@@ -194,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You are the highest ranking bishop in the king's order.
+  m_Text: You are the highest ranking knight in the king's order.
 --- !u!222 &4300848
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -892,9 +892,10 @@ MonoBehaviour:
   m_text: "You must navigate the king to allow him to complete his daily routine.
     If he gets lost, you can push him there. Also, if a \nquestion mark appears above
     his head, press W/A/S/D to determine his next movement direction.\n\nUse the
-    arrow keys to move, and the world only moves when you do. Keep peasants out of
-    the way, watch out\nfor assassins, and if push comes to shove, SHIFT+movement
-    will land a killing blow! Good luck, royal subject!"
+    arrow keys to move, click and drag the mouse to move the camera, and the world
+    only moves when you do.\nKeep peasants out of the way, watch out for assassins,
+    and if push comes to shove, SHIFT+movement will land a killing blow! \nGood luck,
+    royal subject!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5f8f1505c7f3b2b48bfdd7c2696b9c88, type: 2}
   m_sharedMaterial: {fileID: -1394519631327886900, guid: 5f8f1505c7f3b2b48bfdd7c2696b9c88,
@@ -1135,7 +1136,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: As the highest ranking bishop, you have the honor of defending him from
+  m_Text: As the highest ranking knight, you have the honor of defending him from
     any that may threaten his life.
 --- !u!222 &1539123979
 CanvasRenderer:
