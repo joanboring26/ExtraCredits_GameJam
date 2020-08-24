@@ -26,7 +26,7 @@ public class healthbarScript : MonoBehaviour
     {
         healthValue += amount;
         healthbar.transform.localScale = new Vector3(healthValue, 1, 1);
-        if(healthValue < 0)
+        if(healthValue < 0.01f)
             healthValue = 0;
         else if(healthValue > 1)
             healthValue = 1;
