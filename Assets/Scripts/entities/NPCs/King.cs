@@ -14,6 +14,8 @@ public class King : Character
     int currDelay;
     int currInputDelay;
 
+    [SerializeField] uiMasterScript userInterface;
+
     //This will be the king's healthbar object
     //public GameObject KingHealthBar;
     public AudioSource sndSrc;
@@ -59,8 +61,11 @@ public class King : Character
                 modelTransform.gameObject.layer = corpsesLayer;
                 rb.isKinematic = false;
                 rb.AddForce(impactForce * deathForceMultiplier, ForceMode.Impulse);
+                userInterface.FailureState();
             }
         }
+        else
+            ui.ShowAlertText();
     }
 
     public override bool Interact(Character user)
