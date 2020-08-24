@@ -29,7 +29,7 @@ public class introMasterScript : MonoBehaviour
                 instructions.SetActive(true);
             }
             else
-                SceneManager.LoadScene("kingEscortScene");
+                SceneManager.LoadScene("FinalScene");
         }
     }
 
