@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Peasant : Character
 {
+    public static int peasantDeaths = 0;
+
     //Every time a peasant is pushed, be it by another peasant, the player, 
     //or the king, their anger limit goes down, 
     //if it reaches 0, the peasant transforms into an assasin character
@@ -14,7 +16,8 @@ public class Peasant : Character
     public MovDir directionForNextTurn = MovDir.NONE;
     public AudioSource sndSrc;
     public AudioClip dead;
-    [SerializeField] GameObject [] movementArrows;
+    [SerializeField] GameObject [] movementArrows = null;
+
     void Start()
     {
         foreach(GameObject g in movementArrows)
@@ -22,17 +25,12 @@ public class Peasant : Character
     }
     public override void Kill(Vector3 impactForce)
     {
-        sndSrc.PlayOneShot(dead);
-        TimeKeeper.Deregister(this);
-        Rigidbody rb = modelTransform.gameObject.GetComponent<Rigidbody>();
-        if (rb != null)
+        peasantDeaths++;
+        if (sndSrc != null)
         {
-            int corpsesLayer = LayerMask.NameToLayer("Corpses");
-            gameObject.layer = corpsesLayer;
-            modelTransform.gameObject.layer = corpsesLayer;
-            rb.isKinematic = false;
-            rb.AddForce(impactForce * deathForceMultiplier, ForceMode.Impulse);
+            sndSrc.PlayOneShot(dead);
         }
+        base.Kill(impactForce);        
     }
 
     public override void CharacterUpdate()
@@ -63,41 +61,25 @@ public class Peasant : Character
     public override bool Interact(Character user)
     {
         currDir = user.currDir;
-        switch (user.type)
+
+        if (user.type == CharacterType.KING)
         {
-            case CharacterType.PEASANT:
-                //If a peasant is pushed and there is another peasant in the push 
-                //direction, this will trigger on the pushed peasant
-                //If the peasant moves in a direction that is free, tell the other 
-                //peasant that pushed us that he can move to our previous direction
-                if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
-                {
-                    return true;
-                }
-                currDir = MovDir.NONE;
-                return false;
-            case CharacterType.KING:
-                // Peasants are obstacles for the king, so he can't push them
-                //if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
-                //{
-                //    return true;
-                //}
-
-                currDir = MovDir.NONE;
-                return false;
-            case CharacterType.ASSASIN:
-                Kill(user.currDir.Vector());
-                return false;
-            case CharacterType.PLAYER:
-                if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
-                    return true;
-
-                currDir = MovDir.NONE;
-                return false;
-            default:
-                currDir = MovDir.NONE;
-                return false;
+            currDir = MovDir.NONE;
+            return false;
         }
+        if (user.type == CharacterType.ASSASIN)
+        {
+            Kill(user.currDir.Vector());
+            return true;
+        }
+        // This character can be pushed and will push other 
+        // characters that it is allowed to push
+        if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
+        {
+            return true;
+        }
+        currDir = MovDir.NONE;
+        return false;
     }
 
 }

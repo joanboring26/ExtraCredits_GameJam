@@ -12,14 +12,7 @@ public class Player : Character
         currDir = user.currDir;
         switch (user.type)
         {
-            case CharacterType.PEASANT:
-                //If a peasant is pushed and theplayer is in the push direction, this will push the player
-                if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
-                {
-                    return true;
-                }
-                currDir = MovDir.NONE;
-                return false;
+            
             case CharacterType.KING:
                 //The king can push around the player
                 if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
@@ -43,5 +36,14 @@ public class Player : Character
                 currDir = MovDir.NONE;
                 return false;
         }
+
+        // This character can be pushed and will push other 
+        // characters that it is allowed to push
+        if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
+        {
+            return true;
+        }
+        currDir = MovDir.NONE;
+        return false;
     }
 }

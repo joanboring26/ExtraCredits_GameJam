@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class King : Character
@@ -62,40 +63,24 @@ public class King : Character
 
     public override bool Interact(Character user)
     {
-        currDir = user.currDir;
-        switch (user.type)
+        currDir = user.currDir;        
+        if (user.type == CharacterType.ASSASIN)
         {
-            case CharacterType.PEASANT:
-                //If a peasant is pushed and theplayer is in the push direction, this will push the player
-                if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
-                {
-                    return true;
-                }
-                currDir = MovDir.NONE;
-                return false;
-            case CharacterType.KING:
-                //This should never trigger, here just in case
-                if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
-                {
-                    return true;
-                }
-                currDir = MovDir.NONE;
-                return false;
-            case CharacterType.ASSASIN:
-                Kill(-user.currDir.Vector());
+            Kill(user.currDir.Vector());
+            if (health > 0)
+            {
                 Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
-                return false;
-            case CharacterType.PLAYER:
-                if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
-                {
-                    return true;
-                }
-                currDir = MovDir.NONE;
-                return false;
-            default:
-                currDir = MovDir.NONE;
-                return false;
+                return true;
+            }
         }
+        // This character can be pushed and will push other 
+        // characters that it is allowed to push
+        if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
+        {
+            return true;
+        }
+        currDir = MovDir.NONE;
+        return false;
     }
 
     public override void CharacterUpdate()
