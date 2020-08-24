@@ -36,6 +36,6 @@ public class EndingScreenScript : MonoBehaviour
     {
         foreach(GameObject g in menuObjects)
             g.SetActive(true);
-        peasantText.SetText("And we only lost ");
+        peasantText.SetText("And we only lost " + Peasant.peasantDeaths + " along the way!");
     }
 }

@@ -32,4 +32,9 @@ public class healthbarScript : MonoBehaviour
             healthValue = 1;
         healthbar.transform.localScale = new Vector3(healthValue, 1, 1);
     }
+
+    public float GetHealthValue()
+    {
+        return healthValue;
+    }
 }

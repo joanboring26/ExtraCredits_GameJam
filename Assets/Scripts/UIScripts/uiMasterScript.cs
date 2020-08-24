@@ -1,20 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class uiMasterScript : MonoBehaviour
 {
     [SerializeField] textFadeScript alertText = null;
     [SerializeField] healthbarScript kingHealthBar = null;
     [SerializeField] Camera cam = null;
-
+    [SerializeField] toDoListScript toDoList = null;
+    [SerializeField] TextMeshProUGUI dialogue;
     [SerializeField] FailureScreenScript failure;
     [SerializeField] EndingScreenScript success;
     // Start is called before the first frame update
+
+    void Awake()
+    {
+
+    }
     void Start()
     {
-        if(cam.aspect < 1.5)
-            SetSmallScreen();
+        dialogue.SetText("");
     }
 
     // Update is called once per frame
@@ -23,11 +28,6 @@ public class uiMasterScript : MonoBehaviour
 
     }
     
-    private void SetSmallScreen()
-    {
-
-    }
-
     public IEnumerator ShowAlertText()
     {
         
@@ -39,9 +39,16 @@ public class uiMasterScript : MonoBehaviour
     public void DamageKing(float damage)
     {
         kingHealthBar.ChangeHealth(-damage);
+        if(kingHealthBar.GetHealthValue() <= 0)
+            FailureState();
     }
 
-    public void FailureState(){
+    public float GetHealthValue()
+    {
+        return kingHealthBar.GetHealthValue();
+    }
+
+    private void FailureState(){
         StartCoroutine(FailureCoroutine());
     }
 
@@ -52,6 +59,28 @@ public class uiMasterScript : MonoBehaviour
 
     public void SuccessState()
     {
-        
+        success.EnableMenu();
+    }
+
+    public void ShowText(string text)
+    {
+        StartCoroutine(TypeText(text));
+    }
+
+    private IEnumerator TypeText(string text)
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.1f);
+        for(int i = 0; i < text.Length; i++){
+            dialogue.SetText(text.Substring(0,i));
+            yield return wait;
+        }
+        dialogue.SetText(text);
+        yield return new WaitForSeconds(2.0f);
+        dialogue.text = "";
+    }
+
+    public void CompleteTask(toDoListScript.ToDoTasks tasks)
+    {
+        toDoList.CrossOut(tasks);
     }
 }

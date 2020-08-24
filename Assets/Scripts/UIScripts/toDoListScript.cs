@@ -8,6 +8,8 @@ using TMPro;
 public class toDoListScript : MonoBehaviour
 {
     [SerializeField] List<TextMeshProUGUI> listMeshes = null;
+    [SerializeField] AudioClip crossOutSound;
+    private AudioSource sound;
     public enum ToDoTasks
     {
         [Description("Pick up food at the supermarket.")]
@@ -36,6 +38,8 @@ public class toDoListScript : MonoBehaviour
         for(int i = 0; i < listOfTasks.Count; i++)
             listOfTasks[i] = "-" + listOfTasks[i];
         listItems = new List<GameObject>();
+        sound = GetComponent<AudioSource>();
+        sound.clip = crossOutSound;
     }
     // Start is called before the first frame update
     void Start()
@@ -90,6 +94,7 @@ public class toDoListScript : MonoBehaviour
     {
         int value = (int)task;
         listMeshes[value].fontStyle = FontStyles.Strikethrough;
+        sound.Play();
     }
 
 }

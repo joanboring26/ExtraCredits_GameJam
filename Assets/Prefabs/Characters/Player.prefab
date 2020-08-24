@@ -30,6 +30,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5eb3beccd1f314d87547b5a8e78e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &3154605269342905942
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123040414911518507}
+  m_Enabled: 1
 --- !u!136 &5114817722154756689
 CapsuleCollider:
   m_ObjectHideFlags: 0
