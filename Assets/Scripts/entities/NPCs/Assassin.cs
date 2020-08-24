@@ -50,37 +50,27 @@ public class Assassin : Character
 
     public override bool Interact(Character user)
     {
-        currDir = user.currDir;
-        switch (user.type)
+        currDir = user.currDir;        
+        if (user.type == CharacterType.PLAYER)
         {
-            case CharacterType.PEASANT:
-                //If a peasant is pushed and there is an assasin in the push direction, this will push the assasin
-                if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
-                {
-                    return true;
-                }
-                currDir = MovDir.NONE;
-                return false;
-            case CharacterType.KING:
-                //Code where the king dies (in minecraft)
-                user.Kill(currDir.Vector());
-                Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers);
-                currDir = MovDir.NONE;
-                return false;
-            case CharacterType.ASSASIN:
-                //Assasins push eachother
-                if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
-                {
-                    return true;
-                }
-                return false;
-            case CharacterType.PLAYER:
-                Kill(user.currDir.Vector());
-                return false;
-            default:
-                currDir = MovDir.NONE;
-                return false;
+            Kill(currDir.Vector());
+            return true;
         }
+        if (user.type == CharacterType.KING)
+        {
+            // If the king tries to walk into an assassin the king dies
+            user.Kill(currDir.Vector());
+            return false;
+        }
+
+        // This character can be pushed and will push other 
+        // characters that it is allowed to push
+        if (Mover.MoveCharacter(this, out charInTheWay, true, currDir, Physics.DefaultRaycastLayers))
+        {
+            return true;
+        }
+        currDir = MovDir.NONE;
+        return false;
     }
 
 }
