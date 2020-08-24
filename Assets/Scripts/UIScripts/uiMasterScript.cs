@@ -7,6 +7,9 @@ public class uiMasterScript : MonoBehaviour
     [SerializeField] textFadeScript alertText = null;
     [SerializeField] healthbarScript kingHealthBar = null;
     [SerializeField] Camera cam = null;
+
+    [SerializeField] FailureScreenScript failure;
+    [SerializeField] EndingScreenScript success;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +20,7 @@ public class uiMasterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     
     private void SetSmallScreen()
@@ -36,5 +39,19 @@ public class uiMasterScript : MonoBehaviour
     public void DamageKing(float damage)
     {
         kingHealthBar.ChangeHealth(-damage);
+    }
+
+    public void FailureState(){
+        StartCoroutine(FailureCoroutine());
+    }
+
+    private IEnumerator FailureCoroutine(){
+        yield return new WaitForSeconds(0.5f);
+        failure.EnableScreen();
+    }
+
+    public void SuccessState()
+    {
+        
     }
 }
