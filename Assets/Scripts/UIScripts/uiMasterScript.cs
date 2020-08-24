@@ -67,7 +67,7 @@ public class uiMasterScript : MonoBehaviour
         StartCoroutine(TypeText(text));
     }
 
-    private IEnumerator TypeText(string text)
+    public IEnumerator TypeText(string text)
     {
         WaitForSeconds wait = new WaitForSeconds(0.1f);
         for(int i = 0; i < text.Length; i++){
@@ -82,5 +82,11 @@ public class uiMasterScript : MonoBehaviour
     public void CompleteTask(toDoListScript.ToDoTasks tasks)
     {
         toDoList.CrossOut(tasks);
+    }
+
+    public void FocusCamera(Vector3 position)
+    {
+        Vector3 newPos = new Vector3(position.x, cam.transform.position.y, position.z);
+        cam.transform.position = newPos;
     }
 }
